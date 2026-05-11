@@ -2139,6 +2139,15 @@
       });
     }
 
+    // ── Typeform loader (één keer laden) ─────────────────────────
+    let tfLoaded = false;
+    function loadTypeform() {
+      if (tfLoaded) return; tfLoaded = true;
+      const s = document.createElement('script');
+      s.src = '//embed.typeform.com/next/embed.js';
+      document.head.appendChild(s);
+    }
+
     // ── Popovers: kaarten laden ──────────────────────────────────
     const TABS = {
       vitality:    'popover-vitality',
@@ -2156,7 +2165,16 @@
       if (!grid) return;
       fetch(csvUrl(tab)).then(r => r.text()).then(text => {
         const rows = parseCSV(text).filter(r => r.titel && r.titel.trim());
-        if (rows.length) { grid.innerHTML = renderCards(rows); updateCounter(tab, rows.length); }
+        const normalRows = rows.filter(r => !r.embed);
+        const embedRows  = rows.filter(r =>  r.embed);
+        if (normalRows.length) { grid.innerHTML = renderCards(normalRows); updateCounter(tab, normalRows.length); }
+        embedRows.forEach(r => {
+          loadTypeform();
+          const div = document.createElement('div');
+          div.style.marginTop = 'var(--space-8)';
+          div.innerHTML = `<div data-tf-live="${r.embed}"></div>`;
+          grid.insertAdjacentElement('afterend', div);
+        });
       }).catch(() => {});
     });
 
