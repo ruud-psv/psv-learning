@@ -1990,7 +1990,7 @@
       let cur = '', inQ = false;
       for (let i = 0; i < text.length; i++) {
         const c = text[i];
-        if (c === '"') { inQ = !inQ; }
+        if (c === '"') { inQ = !inQ; cur += c; }
         else if (c === '\n' && !inQ) { lines.push(cur); cur = ''; }
         else { cur += c; }
       }
