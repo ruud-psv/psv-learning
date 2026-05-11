@@ -2170,10 +2170,22 @@
         if (normalRows.length) { grid.innerHTML = renderCards(normalRows); updateCounter(tab, normalRows.length); }
         embedRows.forEach(r => {
           loadTypeform();
+          const embedId = `cms-embed-${tab}`;
           const div = document.createElement('div');
+          div.id = embedId;
           div.style.marginTop = 'var(--space-8)';
           div.innerHTML = `<div data-tf-live="${r.embed}"></div>`;
           grid.insertAdjacentElement('afterend', div);
+          const tc = tagCls(r.label_kleur);
+          grid.insertAdjacentHTML('beforeend',
+            `<button class="card-btn" onclick="document.getElementById('${embedId}').scrollIntoView({behavior:'smooth'})" aria-label="${r.titel}">
+              <div class="card"><div class="card__body">
+                <span class="tag ${tc} card__label">${rich(r.label)}</span>
+                <div class="card__title">${rich(r.titel)}</div>
+                <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">${rich(r.omschrijving)}</p>
+                <div class="card__meta"><span class="drill-cta">Invullen →</span></div>
+              </div></div>
+            </button>`);
         });
       }).catch(() => {});
     });
