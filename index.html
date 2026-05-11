@@ -1408,7 +1408,7 @@
 
       <!-- Coach profielen -->
       <h3 style="font-family:var(--font-condensed);font-size:var(--text-xl);text-transform:uppercase;margin-bottom:var(--space-4)">Onze interne coaches</h3>
-      <div class="grid-2">
+      <div id="cms-coaches-grid" class="grid-2">
         <div class="card">
           <div class="card__body">
             <span class="tag card__label">Interne coach</span>
@@ -1487,6 +1487,7 @@
     <div class="popover-body">
       <p class="lead">Collega's delen hier hun favoriete recepten — van een snelle lunch tot een avondmaaltijd. Gezond, lekker en snel klaar.</p>
 
+      <div id="cms-recepten-sections">
       <!-- ONTBIJT -->
       <div class="recipe-section">
         <div class="recipe-section__label">Ontbijt</div>
@@ -1634,6 +1635,8 @@
           </div>
         </div>
       </div>
+
+      </div><!-- /cms-recepten-sections -->
 
       <!-- CTA: deel jouw recept -->
       <div class="recipe-submit-cta">
@@ -1973,6 +1976,213 @@
         if (document.getElementById('nav-overlay').classList.contains('active')) closeNavOverlay();
       }
     });
+  </script>
+
+  <!-- ── Google Sheets CMS ──────────────────────────────────────── -->
+  <script>
+  (function () {
+    const SHEET_ID = '1B7tVY6WMaM-iuPrGg-7RT3D0P9ZBzq_k_QBVz-1KUJA';
+    const csvUrl = tab => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+
+    // ── CSV parser ──────────────────────────────────────────────
+    function parseCSV(text) {
+      const lines = [];
+      let cur = '', inQ = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (c === '"') { inQ = !inQ; }
+        else if (c === '\n' && !inQ) { lines.push(cur); cur = ''; }
+        else { cur += c; }
+      }
+      if (cur.trim()) lines.push(cur);
+      function parseRow(row) {
+        const fields = []; let f = '', inQ = false, i = 0;
+        while (i < row.length) {
+          const c = row[i];
+          if (c === '"' && !inQ)                    { inQ = true;  i++; continue; }
+          if (c === '"' && inQ && row[i+1] === '"') { f += '"';    i += 2; continue; }
+          if (c === '"' && inQ)                     { inQ = false; i++; continue; }
+          if (c === ',' && !inQ)                    { fields.push(f); f = ''; i++; continue; }
+          f += c; i++;
+        }
+        fields.push(f);
+        return fields;
+      }
+      const headers = parseRow(lines[0]);
+      return lines.slice(1).filter(l => l.trim())
+        .map(l => Object.fromEntries(headers.map((h, i) => [h, parseRow(l)[i] ?? ''])));
+    }
+
+    // ── Helpers ─────────────────────────────────────────────────
+    function tagCls(k) {
+      return k === 'zwart' ? 'tag--black' : k === 'goud' ? 'tag--gold' : k === 'outlined' ? 'tag--outlined' : '';
+    }
+
+    // Markdown-achtige opmaak → HTML (voor omschrijvingen en tekstvelden)
+    function rich(str) {
+      if (!str) return '';
+      return str
+        .replace(/\r\n|\r/g, '\n')
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/__(.+?)__/g, '<u>$1</u>')
+        .replace(/\[(.+?)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    }
+
+    // Drill-down kaarten: structurele links naar sub-popovers
+    const DRILL = {
+      "Recepten van collega's": 'recepten',
+      'PSV Mentoring':            'mentoring',
+      'Interne (loopbaan)coaching': 'interne-coaching',
+    };
+
+    // ── Kaart renderer ───────────────────────────────────────────
+    function renderCards(rows) {
+      return rows.filter(r => r.titel && r.titel.trim()).map(r => {
+        const tc = tagCls(r.label_kleur);
+        const drill = DRILL[r.titel];
+        const titel = r.url
+          ? `<a href="${r.url}" target="_blank" rel="noopener" style="color:inherit">${r.titel} ↗</a>`
+          : r.titel;
+        const meta = [
+          r.type ? `<span class="tag ${tc}">${r.type}</span>` : '',
+          r.duur ? `<span>${r.duur}</span>` : '',
+          drill  ? `<span class="drill-cta">Bekijk alle →</span>` : ''
+        ].filter(Boolean).join(' ');
+        const body = `<div class="card__body">
+          <span class="tag ${tc} card__label">${rich(r.label)}</span>
+          <div class="card__title">${titel}</div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">${rich(r.omschrijving)}</p>
+          <div class="card__meta">${meta}</div>
+        </div>`;
+        return drill
+          ? `<button class="card-btn" onclick="openPopover('${drill}')" aria-label="${r.titel} bekijken"><div class="card">${body}</div></button>`
+          : `<div class="card">${body}</div>`;
+      }).join('');
+    }
+
+    // ── Recept renderer ──────────────────────────────────────────
+    const BANDS = ['', 'recipe-card__band--gold', 'recipe-card__band--dark'];
+    function renderRecepten(rows) {
+      const byCategorie = {};
+      rows.filter(r => r.titel).forEach(r => {
+        (byCategorie[r.categorie] = byCategorie[r.categorie] || []).push(r);
+      });
+      return Object.entries(byCategorie).map(([cat, items]) =>
+        `<div class="recipe-section">
+          <div class="recipe-section__label">${cat}</div>
+          <div class="grid-3">${items.map((r, i) =>
+            `<div class="recipe-card">
+              <div class="recipe-card__band ${BANDS[i % 3]}"></div>
+              <div class="recipe-card__body">
+                <div class="recipe-card__title">${r.titel}</div>
+                <div class="recipe-card__by">Door: ${r.auteur}</div>
+                <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">${rich(r.omschrijving)}</p>
+                <div class="recipe-card__meta">
+                  <span class="tag">${cat}</span>
+                  <span style="font-size:var(--text-xs);color:var(--color-gray-09)">${r.duur}</span>
+                </div>
+              </div>
+            </div>`).join('')}
+          </div>
+        </div>`).join('');
+    }
+
+    // ── Coach renderer ───────────────────────────────────────────
+    function renderCoaches(rows) {
+      return rows.filter(r => r.naam).map((r, i) => {
+        const tc = tagCls(r.label_kleur);
+        return `<div class="card"><div class="card__body">
+          <span class="tag ${tc} card__label">${r.label}</span>
+          <div class="card__title">${r.naam}</div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">${rich(r.omschrijving)}</p>
+          <a href="mailto:${r.email}" class="btn${i > 0 ? ' btn--secondary' : ''}">Neem contact op</a>
+        </div></div>`;
+      }).join('');
+    }
+
+    // ── Counter updater ──────────────────────────────────────────
+    function updateCounter(tab, count) {
+      const btn = document.querySelector(`button[onclick="openPopover('${tab}')"]`);
+      const el = btn && btn.querySelector('.card__count');
+      if (el) el.textContent = `${count} ${tab === 'extern' ? 'aanbieders' : 'modules'}`;
+    }
+
+    // ── Tekst injector ───────────────────────────────────────────
+    const TEKST_SELECTORS = {
+      hero_titel:          'h1.hero__title',
+      hero_subtitel:       '.hero__content > p',
+      leeraanbod_lead:     '#leeraanbod .lead',
+      lead_vitality:       '#popover-vitality .lead',
+      lead_vakkennis:      '#popover-vakkennis .lead',
+      lead_motivatie:      '#popover-motivatie .lead',
+      lead_ai:             '#popover-ai .lead',
+      lead_kernwaarden:    '#popover-kernwaarden .lead',
+      lead_coaching:       '#popover-coaching .lead',
+      lead_mentoring:      '#popover-mentoring .lead',
+      lead_interne_coaching: '#popover-interne-coaching .lead',
+      lead_extern:         '#popover-extern .lead',
+      lead_groei:          '#popover-groei .lead',
+      lead_recepten:       '#popover-recepten .lead',
+    };
+    const SIDEBAR_SELECTORS = {
+      tekst_1: '.column-intro p:first-child',
+      tekst_2: '.column-intro p:last-child',
+    };
+
+    function injectTeksten(rows, selectors) {
+      rows.forEach(r => {
+        const sel = selectors[r.sleutel];
+        const el = sel && document.querySelector(sel);
+        if (el && r.waarde) el.innerHTML = rich(r.waarde);
+      });
+    }
+
+    // ── Popovers: kaarten laden ──────────────────────────────────
+    const TABS = {
+      vitality:    'popover-vitality',
+      vakkennis:   'popover-vakkennis',
+      motivatie:   'popover-motivatie',
+      ai:          'popover-ai',
+      kernwaarden: 'popover-kernwaarden',
+      coaching:    'popover-coaching',
+      extern:      'popover-extern',
+      groei:       'popover-groei',
+    };
+
+    Object.entries(TABS).forEach(([tab, popoverId]) => {
+      const grid = document.querySelector(`#${popoverId} .popover-body .grid-3`);
+      if (!grid) return;
+      fetch(csvUrl(tab)).then(r => r.text()).then(text => {
+        const rows = parseCSV(text).filter(r => r.titel && r.titel.trim());
+        if (rows.length) { grid.innerHTML = renderCards(rows); updateCounter(tab, rows.length); }
+      }).catch(() => {});
+    });
+
+    // ── Homepagina teksten ───────────────────────────────────────
+    fetch(csvUrl('homepagina')).then(r => r.text())
+      .then(text => injectTeksten(parseCSV(text), TEKST_SELECTORS)).catch(() => {});
+
+    // ── Sidebar teksten ──────────────────────────────────────────
+    fetch(csvUrl('sidebar')).then(r => r.text())
+      .then(text => injectTeksten(parseCSV(text), SIDEBAR_SELECTORS)).catch(() => {});
+
+    // ── Recepten ─────────────────────────────────────────────────
+    fetch(csvUrl('recepten')).then(r => r.text()).then(text => {
+      const el = document.getElementById('cms-recepten-sections');
+      const rows = parseCSV(text);
+      if (el && rows.length) el.innerHTML = renderRecepten(rows);
+    }).catch(() => {});
+
+    // ── Coaches ──────────────────────────────────────────────────
+    fetch(csvUrl('coaches')).then(r => r.text()).then(text => {
+      const el = document.getElementById('cms-coaches-grid');
+      const rows = parseCSV(text);
+      if (el && rows.length) el.innerHTML = renderCoaches(rows);
+    }).catch(() => {});
+
+  })();
   </script>
 
 </body>
