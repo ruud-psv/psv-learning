@@ -2159,12 +2159,22 @@
       extern:      'popover-extern',
       groei:       'popover-groei',
     };
+    const SHEET_NAMES = {
+      vitality:    'Vitality',
+      vakkennis:   'Vakkennis & Vaardigheden',
+      motivatie:   'Motivatie & Betrokkenheid',
+      ai:          'AI & Phished Academy',
+      kernwaarden: 'Kernwaarden PSV',
+      coaching:    'Interne Coaching',
+      extern:      'Externe aanbieders',
+      groei:       'Groei Inspiratie Hub',
+    };
 
     Object.entries(TABS).forEach(([tab, popoverId]) => {
       const grid = document.querySelector(`#${popoverId} .popover-body .grid-3`);
       if (!grid) return;
-      fetch(csvUrl(tab)).then(r => r.text()).then(text => {
-        const rows = parseCSV(text).filter(r => r.titel && r.titel.trim());
+      fetch(csvUrl(SHEET_NAMES[tab] || tab)).then(r => r.text()).then(text => {
+        const rows = parseCSV(text).filter(r => (r.titel && r.titel.trim()) || r.embed);
         const normalRows = rows.filter(r => !r.embed);
         const embedRows  = rows.filter(r =>  r.embed);
         if (normalRows.length) { grid.innerHTML = renderCards(normalRows); updateCounter(tab, normalRows.length); }
@@ -2191,15 +2201,15 @@
     });
 
     // ── Homepagina teksten ───────────────────────────────────────
-    fetch(csvUrl('homepagina')).then(r => r.text())
+    fetch(csvUrl('Homepagina')).then(r => r.text())
       .then(text => injectTeksten(parseCSV(text), TEKST_SELECTORS)).catch(() => {});
 
     // ── Sidebar teksten ──────────────────────────────────────────
-    fetch(csvUrl('sidebar')).then(r => r.text())
+    fetch(csvUrl('Sidebar')).then(r => r.text())
       .then(text => injectTeksten(parseCSV(text), SIDEBAR_SELECTORS)).catch(() => {});
 
     // ── Recepten ─────────────────────────────────────────────────
-    fetch(csvUrl('recepten')).then(r => r.text()).then(text => {
+    fetch(csvUrl('> Recepten')).then(r => r.text()).then(text => {
       const el = document.getElementById('cms-recepten-sections');
       const rows = parseCSV(text);
       if (el && rows.length) el.innerHTML = renderRecepten(rows);
