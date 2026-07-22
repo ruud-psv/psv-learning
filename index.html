@@ -278,6 +278,30 @@
       transform-origin: top left;
     }
 
+    /* Hero-zoekbalk — grote centrale zoek, zoals Efteling */
+    .hero-search {
+      position: relative; display: flex; align-items: stretch;
+      max-width: 620px; margin-top: var(--space-2);
+      box-shadow: var(--shadow-lg); z-index: 2;
+    }
+    .hero-search input[type="search"] {
+      flex: 1; min-width: 0; border: none; outline: none;
+      background: var(--color-white); color: var(--color-black);
+      font-family: var(--font-sans); font-size: var(--text-lg);
+      padding: var(--space-4) var(--space-5);
+    }
+    .hero-search input[type="search"]::placeholder { color: var(--color-gray-09); }
+    .hero-search__btn {
+      flex-shrink: 0; width: 60px; border: none; cursor: pointer;
+      background: var(--color-black);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition-fast);
+    }
+    .hero-search__btn:hover, .hero-search__btn:focus-visible { background: var(--color-gray-11); }
+    .hero-search__btn img { width: 22px; height: 22px; }
+    /* Dropdown vast t.o.v. viewport zodat de hero-overflow 'm niet afknipt */
+    #hero-search-dropdown { position: fixed; right: auto; }
+
     /* ============================================================
        SECTIES — uit Design System
        ============================================================ */
@@ -985,16 +1009,15 @@
                 <span class="tag tag--black hero__tag">PSV Organisatie</span>
                 <h1 class="hero__title" style="font-size: var(--text-4xl); color: var(--color-white)">Groei begint<br>bij jou</h1>
                 <p style="color: rgba(255,255,255,0.85); font-family: var(--font-text); font-size: var(--text-lg); line-height: var(--leading-loose); max-width: 480px; margin-bottom: var(--space-8)">Iedere medewerker is een toekomstig sterspeler. Met eigenaarschap, coaching en leren op maat haal jij het beste uit jezelf.</p>
-                <div style="display:flex; gap: var(--space-4); flex-wrap: wrap;">
-                  <button class="btn btn--medium btn--skewed btn--white"
-                          onclick="document.getElementById('leeraanbod').scrollIntoView({behavior:'smooth'})">
-                    Bekijk het aanbod
+                <div class="hero-search" role="search">
+                  <input type="search" id="hero-search-input"
+                         placeholder="Start met typen om te zoeken…"
+                         aria-label="Zoek in PSV - Training Ground"
+                         aria-controls="hero-search-dropdown" autocomplete="off" />
+                  <button class="hero-search__btn" aria-label="Zoeken">
+                    <img src="huisstijl/icons/WHITE/ICON_PSV_white_search.svg" alt="" />
                   </button>
-                  <a href="https://my.goodhabitz.com/nl-nl/talent-scan/scan/015xInkNmMmhMOC2Fl8TgL/start"
-                     target="_blank" rel="noopener"
-                     class="btn btn--medium btn--skewed btn--secondary">
-                    Doe talentscan
-                  </a>
+                  <div id="hero-search-dropdown" class="search-dropdown" role="listbox" aria-label="Zoekresultaten"></div>
                 </div>
               </div>
             </div>
@@ -2327,6 +2350,48 @@
         mobileDropdown.appendChild(el);
       });
     });
+
+    // ── Hero-zoekbalk (zoals Efteling) — hergebruikt search()/highlight() ──
+    const heroInput    = document.getElementById('hero-search-input');
+    const heroDropdown = document.getElementById('hero-search-dropdown');
+    const heroBtn      = document.querySelector('.hero-search__btn');
+    if (heroInput && heroDropdown) {
+      const positionHero = () => {
+        const r = heroInput.getBoundingClientRect();
+        heroDropdown.style.left  = r.left + 'px';
+        heroDropdown.style.top   = (r.bottom + 4) + 'px';
+        heroDropdown.style.width = r.width + 'px';
+      };
+      const renderHero = query => {
+        const results = search(query);
+        heroDropdown.innerHTML = '';
+        if (!query.trim() || query.trim().length < 2) { heroDropdown.classList.remove('active'); return; }
+        positionHero();
+        if (!results.length) {
+          heroDropdown.innerHTML = '<div class="search-empty">Geen resultaten gevonden voor "<strong>' + query + '</strong>"</div>';
+          heroDropdown.classList.add('active'); return;
+        }
+        results.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'search-result'; el.setAttribute('role', 'option'); el.setAttribute('tabindex', '0');
+          el.innerHTML = '<div><div class="search-result__title">' + highlight(item.title, query) +
+                         '</div><div class="search-result__cat">' + item.category + '</div></div>';
+          const open = () => { openPopover(item.popover); heroDropdown.classList.remove('active'); heroInput.value = ''; };
+          el.addEventListener('click', open);
+          el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+          heroDropdown.appendChild(el);
+        });
+        heroDropdown.classList.add('active');
+      };
+      heroInput.addEventListener('input', e => renderHero(e.target.value));
+      heroInput.addEventListener('focus', e => { if (e.target.value.trim().length >= 2) renderHero(e.target.value); });
+      heroInput.addEventListener('keydown', e => { if (e.key === 'Escape') heroDropdown.classList.remove('active'); });
+      if (heroBtn) heroBtn.addEventListener('click', () => { heroInput.focus(); renderHero(heroInput.value); });
+      document.addEventListener('click', e => { if (!e.target.closest('.hero-search')) heroDropdown.classList.remove('active'); });
+      const reflow = () => { if (heroDropdown.classList.contains('active')) positionHero(); };
+      window.addEventListener('scroll', reflow, true);
+      window.addEventListener('resize', reflow);
+    }
 
     // Escape sluit mobiele zoekoverlay
     document.addEventListener('keydown', e => {
