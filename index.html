@@ -953,7 +953,12 @@
 
             <!-- Navigatie — directe links die popover openen -->
             <nav class="column-nav" aria-label="Categorienavigatie">
-              <span class="label">Aanbod</span>
+              <span class="label">Thema's</span>
+              <button class="column-nav__item" onclick="openPopoverMobile('dit-is-psv')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_trophy.svg" alt="" />Dit is PSV</button>
+              <button class="column-nav__item" onclick="openPopoverMobile('groeien-werk')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_stairs.svg" alt="" />Groeien in je werk</button>
+              <button class="column-nav__item" onclick="openPopoverMobile('persoonlijke-ontwikkeling')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_person.svg" alt="" />Persoonlijke ontwikkeling</button>
+              <button class="column-nav__item" onclick="openPopoverMobile('zorg-voor-jezelf')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_first-aid.svg" alt="" />Zorg goed voor jezelf</button>
+              <span class="label" style="margin-top: var(--space-4)">Aanbod (oud)</span>
               <button class="column-nav__item" onclick="openPopover('vitality')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_first-aid.svg" alt="" />Vitality</button>
               <button class="column-nav__item" onclick="openPopover('vakkennis')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_person_business.svg" alt="" />Vakkennis &amp; Vaardigheden</button>
               <button class="column-nav__item" onclick="openPopover('motivatie')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_people.svg" alt="" />Motivatie &amp; Betrokkenheid</button>
@@ -994,11 +999,85 @@
               </div>
             </div>
 
-            <!-- OVERZICHT-SECTIE — article.article-default.elevation zoals PSV.nl -->
+            <!-- ============================================================
+                 NIEUWE SECTIE — 4 ontwikkelthema's met drill-down popovers
+                 ============================================================ -->
+            <article class="article-default elevation">
+            <div class="overview-section" id="ontwikkelthemas">
+
+              <h2 class="section__title">Leeraanbod</h2>
+              <p class="lead">Ontdek jouw ontwikkeling langs vier thema's. Klik op een thema om het volledige aanbod te bekijken.</p>
+
+              <div class="grid-4">
+
+                <!-- 1 · Dit is PSV -->
+                <button class="card-btn" onclick="openPopover('dit-is-psv')" aria-label="Dit is PSV openen">
+                  <div class="card">
+                    <div class="card-visual cv-red" aria-hidden="true">
+                      <img src="huisstijl/icons/WHITE/ICON_PSV_white_trophy.svg" alt="" />
+                    </div>
+                    <div class="card__body">
+                      <div class="card__count">5 onderdelen</div>
+                      <div class="card__title-highlight"><span>Dit is</span><br><span>PSV</span></div>
+                      <div class="card-ghost-cta">Bekijk thema →</div>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- 2 · Groeien in je werk -->
+                <button class="card-btn" onclick="openPopover('groeien-werk')" aria-label="Groeien in je werk openen">
+                  <div class="card">
+                    <div class="card-visual cv-dark" aria-hidden="true">
+                      <img src="huisstijl/icons/WHITE/ICON_PSV_white_stairs.svg" alt="" />
+                    </div>
+                    <div class="card__body">
+                      <div class="card__count">5 onderdelen</div>
+                      <div class="card__title-highlight"><span>Groeien in</span><br><span>je werk</span></div>
+                      <div class="card-ghost-cta">Bekijk thema →</div>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- 3 · Werk aan je persoonlijke ontwikkeling -->
+                <button class="card-btn" onclick="openPopover('persoonlijke-ontwikkeling')" aria-label="Werk aan je persoonlijke ontwikkeling openen">
+                  <div class="card">
+                    <div class="card-visual cv-gold" aria-hidden="true">
+                      <img src="huisstijl/icons/WHITE/ICON_PSV_white_person.svg" alt="" />
+                    </div>
+                    <div class="card__body">
+                      <div class="card__count">7 onderdelen</div>
+                      <div class="card__title-highlight"><span>Persoonlijke</span><br><span>ontwikkeling</span></div>
+                      <div class="card-ghost-cta">Bekijk thema →</div>
+                    </div>
+                  </div>
+                </button>
+
+                <!-- 4 · Zorg goed voor jezelf -->
+                <button class="card-btn" onclick="openPopover('zorg-voor-jezelf')" aria-label="Zorg goed voor jezelf openen">
+                  <div class="card">
+                    <div class="card-visual cv-black" aria-hidden="true">
+                      <img src="huisstijl/icons/WHITE/ICON_PSV_white_first-aid.svg" alt="" />
+                    </div>
+                    <div class="card__body">
+                      <div class="card__count">5 onderdelen</div>
+                      <div class="card__title-highlight"><span>Zorg goed</span><br><span>voor jezelf</span></div>
+                      <div class="card-ghost-cta">Bekijk thema →</div>
+                    </div>
+                  </div>
+                </button>
+
+              </div><!-- /grid-4 -->
+            </div><!-- /overview-section nieuw -->
+            </article>
+
+            <!-- ============================================================
+                 OUD LEERAANBOD — kan verwijderd worden zodra de nieuwe
+                 sectie hierboven definitief is (incl. de 8 popovers eronder)
+                 ============================================================ -->
             <article class="article-default elevation">
             <div class="overview-section section--accent" id="leeraanbod">
 
-              <h2 class="section__title">Leeraanbod</h2>
+              <h2 class="section__title">Leeraanbod (oude indeling)</h2>
               <p class="lead">PSV biedt een breed scala aan trainingen, workshops en tools — zowel intern als extern. Klik op een categorie om het volledige aanbod te bekijken.</p>
 
               <div class="grid-4">
@@ -1293,14 +1372,14 @@
   <!-- MENTORING — sub-level van Coaching -->
   <dialog class="popover popover--sub" id="popover-mentoring" aria-labelledby="pt-mentoring">
     <div class="popover-header popover-header--gold">
-      <button class="popover-back" onclick="closePopover('mentoring')" aria-label="Terug naar Coaching">
-        ← Coaching
+      <button class="popover-back" onclick="closePopover('mentoring')" aria-label="Terug">
+        ← Terug
       </button>
       <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
         <span class="label">Leren van elkaar · Groeien met elkaar</span>
         <h2 id="pt-mentoring">PSV Mentoring</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('mentoring');closePopover('coaching')" aria-label="Alles sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Bij PSV geloven we in de kracht van ervaring. Mentoring draait om het delen van kennis, inzichten en praktijkervaring. Niet coachen, maar inspireren, spiegelen en begeleiden.</p>
@@ -1348,14 +1427,14 @@
   <!-- INTERNE COACHING — sub-level van Coaching -->
   <dialog class="popover popover--sub" id="popover-interne-coaching" aria-labelledby="pt-interne-coaching">
     <div class="popover-header popover-header--gold">
-      <button class="popover-back" onclick="closePopover('interne-coaching')" aria-label="Terug naar Coaching">
-        ← Coaching
+      <button class="popover-back" onclick="closePopover('interne-coaching')" aria-label="Terug">
+        ← Terug
       </button>
       <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
         <span class="label">Persoonlijke Begeleiding</span>
         <h2 id="pt-interne-coaching">Interne (loopbaan)coaching</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('interne-coaching');closePopover('coaching')" aria-label="Alles sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Coaching is een effectieve manier om jezelf verder te ontwikkelen — niet door kennis over te dragen, maar door gedrag duurzaam te veranderen. Persoonlijker wordt het niet.</p>
@@ -1475,14 +1554,14 @@
   <!-- RECEPTEN VAN COLLEGA'S — sub-level van Vitality -->
   <dialog class="popover popover--sub" id="popover-recepten" aria-labelledby="pt-recepten">
     <div class="popover-header">
-      <button class="popover-back" onclick="closePopover('recepten')" aria-label="Terug naar Vitality">
-        ← Vitality
+      <button class="popover-back" onclick="closePopover('recepten')" aria-label="Terug">
+        ← Terug
       </button>
       <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
         <span class="label">Lifestyle &amp; Gezondheid</span>
         <h2 id="pt-recepten">Recepten van collega's</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('recepten');closePopover('vitality')" aria-label="Alles sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Collega's delen hier hun favoriete recepten — van een snelle lunch tot een avondmaaltijd. Gezond, lekker en snel klaar.</p>
@@ -1646,6 +1725,268 @@
     </div>
   </dialog>
 
+
+  <!-- ============================================================
+       NIEUWE POPOVERS — 4 ontwikkelthema's + sub-popovers
+       Zelfstandig (niet CMS-gedreven). Kan de oude popovers t.z.t. vervangen.
+       ============================================================ -->
+
+  <!-- 1 · DIT IS PSV -->
+  <dialog class="popover" id="popover-dit-is-psv" aria-labelledby="pt-dit-is-psv">
+    <div class="popover-header">
+      <div class="popover-header__content">
+        <span class="label">Onze identiteit</span>
+        <h2 id="pt-dit-is-psv">Dit is PSV</h2>
+      </div>
+      <button class="popover-close" onclick="closePopover('dit-is-psv')" aria-label="Sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Weten waar je werkt maakt je sterker in wat je doet. Ontdek de visie, waarden en identiteit die PSV maken tot wat het is.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag card__label">Strategie</span><div class="card__title">Visie 2030</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Presentatie en video over de koers en ambitie van PSV richting 2030.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Regio</span><div class="card__title">Brainport</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Wat betekent Brainport voor PSV en de regio Eindhoven? Uitleg volgt binnenkort.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Identiteit</span><div class="card__title">Kernwaarden</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Onze vijf kernwaarden: prestatiegericht, gastvrij, betrouwbaar, sociaal betrokken en innovatief.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Merk</span><div class="card__title">Merkwaarden</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Waar het merk PSV voor staat — de meest actuele uitleg volgt binnenkort.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Leiderschap</span><div class="card__title">Leiderschapsvaardigheden</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Ontwikkel je leiderschapsstijl en leer hoe je jouw team inspireert, aanstuurt en laat groeien.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 2 · GROEIEN IN JE WERK -->
+  <dialog class="popover" id="popover-groeien-werk" aria-labelledby="pt-groeien-werk">
+    <div class="popover-header popover-header--dark">
+      <div class="popover-header__content">
+        <span class="label">Professionele ontwikkeling</span>
+        <h2 id="pt-groeien-werk">Groeien in je werk</h2>
+      </div>
+      <button class="popover-close" onclick="closePopover('groeien-werk')" aria-label="Sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Sterk zijn in je rol vraagt blijvende ontwikkeling. Werk aan je vakmanschap, digitale vaardigheden en veiligheid — op jouw tempo.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Digitaal &amp; veilig</span><div class="card__title"><a href="https://phishedacademy.io/en/dashboard" target="_blank" rel="noopener" style="color:inherit">Phished &amp; AI trainingen ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Train je digitale weerbaarheid via de Phished Academy. Binnenkort ook: <strong>Innovatie × AI</strong> — slimmer werken voor beter resultaat.</p><div class="card__meta"><span class="tag tag--black">Academy</span> <span class="tag tag--outlined">Extern</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('microsoft')" aria-label="Microsofttrainingen bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--black card__label">GoodHabitz</span>
+            <div class="card__title">Microsofttrainingen</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Zeven e-learnings: Teams, Outlook, Excel, PowerPoint, Word, Copilot en Power BI.</p>
+            <div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
+        <div class="card"><div class="card__body"><span class="tag card__label">Taal</span><div class="card__title">Taaltrainingen</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Verbeter je Engels, Duits of een andere taal via een persoonlijk traject — voor alle niveaus.</p><div class="card__meta"><span class="tag">Traject</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('knvb')" aria-label="KNVB en UEFA opleidingen bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag card__label">Voetbal</span>
+            <div class="card__title">KNVB / UEFA opleidingen</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Op- en bijscholingen van KNVB, UEFA en het Johan Cruyff Institute.</p>
+            <div class="card__meta"><span class="tag tag--outlined">Extern</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
+        <button class="card-btn" onclick="openPopover('veiligheid')" aria-label="Veiligheid BHV en AED bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--black card__label">GoodHabitz</span>
+            <div class="card__title">Veiligheid (BHV/AED)</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Weet wat je moet doen als elke seconde telt — BHV, veilig werken en meer.</p>
+            <div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 3 · WERK AAN JE PERSOONLIJKE ONTWIKKELING -->
+  <dialog class="popover" id="popover-persoonlijke-ontwikkeling" aria-labelledby="pt-persoonlijke-ontwikkeling">
+    <div class="popover-header popover-header--gold">
+      <div class="popover-header__content">
+        <span class="label">Persoonlijke groei</span>
+        <h2 id="pt-persoonlijke-ontwikkeling">Werk aan je persoonlijke ontwikkeling</h2>
+      </div>
+      <button class="popover-close" onclick="closePopover('persoonlijke-ontwikkeling')" aria-label="Sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Ontwikkeling begint bij stilstaan en reflecteren. Met coaching, mentoring en inspiratie werk je gericht aan jezelf en je team.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag tag--gold card__label">Intern</span><div class="card__title">Interne masterclasses</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer van experts binnen PSV over thema's als AI, sportmarketing, Brainport, videoanalyse en Visie 2030.</p><div class="card__meta"><span class="tag tag--gold">Live</span> <span>1–2 uur</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('interne-coaching')" aria-label="Interne loopbaancoaching bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--black card__label">Loopbaan &amp; balans</span>
+            <div class="card__title">Interne (loopbaan)coaching</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Dichtbij, vertrouwd en effectief. Interne coaches helpen jou aan bewustwording, zelfvertrouwen en persoonlijk leiderschap.</p>
+            <div class="card__meta"><span class="tag tag--black">Intern</span> <span class="drill-cta">Bekijk →</span></div>
+          </div></div>
+        </button>
+        <button class="card-btn" onclick="openPopover('mentoring')" aria-label="PSV Mentoring bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag card__label">1-op-1</span>
+            <div class="card__title">PSV Mentoring</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer van een ervaren collega — mentoring draait om het delen van kennis, inzichten en praktijkervaring.</p>
+            <div class="card__meta"><span class="tag">Intern</span> <span class="drill-cta">Bekijk →</span></div>
+          </div></div>
+        </button>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Team</span><div class="card__title">Teamworkouts</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Versterk samenwerking en vertrouwen binnen jouw team via een begeleide groepssessie op maat.</p><div class="card__meta"><span class="tag tag--black">Groep</span> <span>2 uur</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('mdt')" aria-label="Maak impact met MDT bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--gold card__label">Maatschappelijk</span>
+            <div class="card__title">Maak impact met MDT</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Ontwikkel jezelf én beteken iets voor een ander. Kies uit MDT Missie of de PartnerBivak.</p>
+            <div class="card__meta"><span class="tag tag--gold">MDT</span> <span class="drill-cta">Bekijk →</span></div>
+          </div></div>
+        </button>
+        <div class="card"><div class="card__body"><span class="tag tag--outlined card__label">Extern</span><div class="card__title">Externe aanbieders / training</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Kies bewust voor externe leerervaringen die je verdiepen of verbreden — in overleg met je leidinggevende.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--gold card__label">Inspiratie</span><div class="card__title">Groei &amp; inspiratie hub</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Dagelijkse inspiratie: boeken, podcasts, artikelen, films en evenementen — samengesteld door collega's en HR.</p><div class="card__meta"><span class="tag tag--gold">Curated</span></div></div></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 4 · ZORG GOED VOOR JEZELF -->
+  <dialog class="popover" id="popover-zorg-voor-jezelf" aria-labelledby="pt-zorg-voor-jezelf">
+    <div class="popover-header popover-header--black">
+      <div class="popover-header__content">
+        <span class="label">Vitaliteit &amp; welzijn</span>
+        <h2 id="pt-zorg-voor-jezelf">Zorg goed voor jezelf</h2>
+      </div>
+      <button class="popover-close" onclick="closePopover('zorg-voor-jezelf')" aria-label="Sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Goed presteren begint bij goed in je energie zitten. Ontdek hoe je mentaal en fysiek fit blijft en bewuste keuzes maakt.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag card__label">Welzijn</span><div class="card__title">Vitaliteit</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Ontdek het complete PSV vitality-aanbod — van sportfaciliteiten en health checks tot mindfulness en voeding.</p><div class="card__meta"><span class="tag">Doorlopend</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Sport</span><div class="card__title">Sportaanbieders</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Exclusieve kortingen en samenwerkingen met sportaanbieders in de regio Eindhoven.</p><div class="card__meta"><span class="tag tag--black">Overzicht</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Gezondheid</span><div class="card__title">Stoppen met roken</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Professioneel begeleid traject om te stoppen met roken, volledig vergoed door PSV.</p><div class="card__meta"><span class="tag">Traject</span> <span>6 wk</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Mindset</span><div class="card__title">Mindfulness</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer omgaan met stress en vergroot je mentale veerkracht via een begeleide training van 8 weken.</p><div class="card__meta"><span class="tag">Training</span> <span>8 wk</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('recepten')" aria-label="Recepten van collega's bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--black card__label">Lifestyle</span>
+            <div class="card__title">Recepten van collega's</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Gezonde en lekkere recepten van collega's — voor elk moment van de dag.</p>
+            <div class="card__meta"><span class="tag tag--black">Inspiratie</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · MICROSOFTTRAININGEN (onder Groeien in je werk) -->
+  <dialog class="popover popover--sub" id="popover-microsoft" aria-labelledby="pt-microsoft">
+    <div class="popover-header popover-header--dark">
+      <button class="popover-back" onclick="closePopover('microsoft')" aria-label="Terug">← Terug</button>
+      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+        <span class="label">GoodHabitz e-learning</span>
+        <h2 id="pt-microsoft">Microsofttrainingen</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Haal meer uit je dagelijkse tools. Volg deze GoodHabitz e-learnings op je eigen tempo en werk slimmer samen.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/90065-microsoft-teams" target="_blank" rel="noopener" style="color:inherit">Teams ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Werk slimmer samen via chat, online vergaderen en samenwerken aan documenten.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/90493-microsoft-outlook" target="_blank" rel="noopener" style="color:inherit">Outlook ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Haal meer uit Outlook dan e-mail: plan, organiseer en communiceer slimmer.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/91002-microsoft-excel" target="_blank" rel="noopener" style="color:inherit">Excel ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Verwerk, analyseer en visualiseer data in overzichtelijke dashboards.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/93884-microsoft-powerpoint" target="_blank" rel="noopener" style="color:inherit">PowerPoint ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Maak presentaties die indruk maken en breng je boodschap sterker over.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/93415-microsoft-word" target="_blank" rel="noopener" style="color:inherit">Word ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Maak professionele documenten en benut alle mogelijkheden van Word.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/93982-microsoft-copilot" target="_blank" rel="noopener" style="color:inherit">Copilot ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Werk slimmer met AI — van teksten schrijven tot informatie analyseren.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Microsoft</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/88529-microsoft-power-bi" target="_blank" rel="noopener" style="color:inherit">Power BI ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Zet data om in heldere inzichten met interactieve rapportages.</p><div class="card__meta"><span class="tag tag--black">E-learning</span> <span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · KNVB / UEFA OPLEIDINGEN (onder Groeien in je werk) -->
+  <dialog class="popover popover--sub" id="popover-knvb" aria-labelledby="pt-knvb">
+    <div class="popover-header">
+      <button class="popover-back" onclick="closePopover('knvb')" aria-label="Terug">← Terug</button>
+      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+        <span class="label">Voetbalopleidingen &amp; ontwikkeling</span>
+        <h2 id="pt-knvb">KNVB / UEFA opleidingen</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Blijf jezelf ontwikkelen als professional binnen het voetbal — op én naast het veld.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag card__label">KNVB Academie</span><div class="card__title"><a href="https://www.knvb.nl/assist/assist-trainers/opleidingen-op--en-bijscholingen" target="_blank" rel="noopener" style="color:inherit">KNVB-opleidingen ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Op- en bijscholingen voor elke fase van je ontwikkeling als voetbalcoach.</p><div class="card__meta"><span class="tag tag--outlined">Extern</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">KNVB Expertise</span><div class="card__title"><a href="https://www.knvbexpertise.nl/knvb_node/evenementen" target="_blank" rel="noopener" style="color:inherit">KNVB Expertise ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Evenementen, opleidingen en kennisbijeenkomsten om je vakkennis te verdiepen.</p><div class="card__meta"><span class="tag tag--outlined">Extern</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">UEFA</span><div class="card__title"><a href="https://uefaacademy.com/" target="_blank" rel="noopener" style="color:inherit">UEFA-opleidingen ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Til je kennis en expertise naar een hoger niveau met het aanbod van de UEFA.</p><div class="card__meta"><span class="tag tag--outlined">Extern</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Johan Cruyff Institute</span><div class="card__title"><a href="https://johancruyffinstitute.com/en/" target="_blank" rel="noopener" style="color:inherit">JCI ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Opleidingen in sportmanagement, coaching en leiderschap.</p><div class="card__meta"><span class="tag tag--outlined">Extern</span></div></div></div>
+      </div>
+      <div class="alert alert--info" style="margin-top:var(--space-8)">
+        <strong>Let op:</strong> voor betaalde opleidingen is altijd een professionele onderbouwing nodig. Vooraf is goedkeuring van je leidinggevende én HR vereist.
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · VEILIGHEID BHV/AED (onder Groeien in je werk) -->
+  <dialog class="popover popover--sub" id="popover-veiligheid" aria-labelledby="pt-veiligheid">
+    <div class="popover-header popover-header--black">
+      <button class="popover-back" onclick="closePopover('veiligheid')" aria-label="Terug">← Terug</button>
+      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+        <span class="label">BHV / ARBO</span>
+        <h2 id="pt-veiligheid">Veiligheid (BHV/AED)</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Veilig werken begint bij jezelf. Weet wat je moet doen als elke seconde telt.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body"><span class="tag card__label">BHV</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/16803-basiskennis-bhv" target="_blank" rel="noopener" style="color:inherit">Basiskennis BHV ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer de basis van bedrijfshulpverlening en handel snel en verantwoord in noodsituaties.</p><div class="card__meta"><span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">ARBO</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/69623-veilig-aan-het-werk" target="_blank" rel="noopener" style="color:inherit">Veilig aan het werk ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Vergroot je kennis van veilig en gezond werken — herken, voorkom en verklein risico's.</p><div class="card__meta"><span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Gedrag</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/courses/25483-omgaan-met-agressie" target="_blank" rel="noopener" style="color:inherit">Omgaan met agressie ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Blijf rustig, stel grenzen en ga professioneel om met lastige of ongewenste situaties.</p><div class="card__meta"><span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Thuiswerken</span><div class="card__title"><a href="https://my.goodhabitz.com/nl-nl/learning-activities/be54fcff-c7a9-49af-a86f-2ee8e42d99e6?activityMode=bite" target="_blank" rel="noopener" style="color:inherit">Thuiswerkplek inrichten ↗</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Richt je thuiswerkplek slim in en voorkom lichamelijke klachten.</p><div class="card__meta"><span class="tag tag--outlined">GoodHabitz</span></div></div></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · MAAK IMPACT MET MDT (onder Persoonlijke ontwikkeling) -->
+  <dialog class="popover popover--sub" id="popover-mdt" aria-labelledby="pt-mdt">
+    <div class="popover-header popover-header--gold">
+      <button class="popover-back" onclick="closePopover('mdt')" aria-label="Terug">← Terug</button>
+      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+        <span class="label">Maatschappelijke Diensttijd</span>
+        <h2 id="pt-mdt">Maak impact met MDT</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Alles sluiten">✕</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Bij PSV geloven we in ontwikkeling, verbinding en maatschappelijke betrokkenheid. Via MDT vergroot je je blik op de wereld, werk je samen met nieuwe mensen en zet je jouw talenten in voor de maatschappij — én voor jezelf. Kies het programma dat het beste bij jou past.</p>
+
+      <div class="grid-2" style="margin-bottom: var(--space-8)">
+        <div class="card" style="border-top: 4px solid var(--color-red-primary)">
+          <div class="card__body">
+            <span class="tag card__label">17–30 jaar</span>
+            <div class="card__title">MDT Missie</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Ga actief aan de slag en maak direct maatschappelijke impact. Je werkt samen aan uitdagende activiteiten en projecten, ontwikkelt nieuwe vaardigheden en ontdekt hoe jij met jouw talenten het verschil maakt.</p>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-2)"><strong>Dit past bij jou als je:</strong></p>
+            <ul style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);padding-left:var(--space-5);margin-bottom:var(--space-4)">
+              <li>graag nieuwe ervaringen opdoet;</li>
+              <li>jezelf verder wilt ontwikkelen;</li>
+              <li>energie krijgt van samenwerken;</li>
+              <li>maatschappelijke impact wilt maken.</li>
+            </ul>
+            <span class="tag tag--outlined">🎬 Teaser volgt</span>
+          </div>
+        </div>
+        <div class="card" style="border-top: 4px solid var(--color-neutral-dark)">
+          <div class="card__body">
+            <span class="tag tag--black card__label">30 jaar en ouder</span>
+            <div class="card__title">PartnerBivak</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Stap uit je dagelijkse omgeving en ervaar de wereld van een ander. Samen met een maatschappelijke organisatie krijg je een uniek inkijkje in de uitdagingen, talenten en verhalen van mensen die je normaal niet snel ontmoet.</p>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-2)"><strong>Dit past bij jou als je:</strong></p>
+            <ul style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);padding-left:var(--space-5);margin-bottom:var(--space-4)">
+              <li>openstaat voor nieuwe inzichten;</li>
+              <li>verbinding wilt maken met anderen;</li>
+              <li>je maatschappelijke betrokkenheid wilt vergroten;</li>
+              <li>wilt leren door te ervaren.</li>
+            </ul>
+            <span class="tag tag--outlined">🎬 Teaser volgt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert--info">
+        <strong>Welke keuze maak jij?</strong> Beide programma's dragen bij aan persoonlijke ontwikkeling, maatschappelijke betrokkenheid en samenwerking. Kies de vorm die het beste aansluit bij jouw interesses.
+      </div>
+    </div>
+  </dialog>
+
   <script>
     // ── Sidebar toggle ───────────────────────────────────────────
     function toggleNav(btn) {
@@ -1705,6 +2046,10 @@
     function closePopover(id) {
       const dlg = document.getElementById('popover-' + id);
       if (dlg) dlg.close();
+    }
+    // Sluit alle open popovers (voor 'Alles sluiten' vanuit een sub-popover)
+    function closeAllPopovers() {
+      document.querySelectorAll('dialog.popover[open]').forEach(d => d.close());
     }
 
     // Sluiten op backdrop-klik
