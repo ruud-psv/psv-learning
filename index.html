@@ -643,20 +643,137 @@
     }
     .popover-body .card-btn:hover .drill-cta { color: var(--color-red-dark); }
 
-    /* Terugknop in popover-header */
+    /* Terugknop in popover-header — staat boven de titel, label noemt het
+       niveau waar je naar terugkeert. Wordt door JS ingevoegd (popover-stack). */
     .popover-back {
-      position: absolute; top: var(--space-4); left: var(--space-4); z-index: 2;
       background: rgba(255,255,255,0.15); border: none;
-      height: 44px; padding: 0 var(--space-4); cursor: pointer;
-      display: flex; align-items: center; gap: var(--space-2);
+      min-height: 36px; padding: var(--space-2) var(--space-4); cursor: pointer;
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      margin-bottom: var(--space-4); max-width: 100%;
       color: var(--color-white); font-family: var(--font-condensed);
       font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.04em;
-      transition: var(--transition-fast);
+      text-align: left; transition: var(--transition-fast);
     }
     .popover-back:hover { background: rgba(255,255,255,0.3); }
+    .popover-back__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Ruimte vrijhouden voor de sluitknop rechtsboven */
+    .popover-header__content { padding-right: calc(44px + var(--space-4)); }
 
     /* Sub-level popover iets smaller zodat nesting zichtbaar is */
     dialog.popover.popover--sub { max-width: min(820px, 92vw); }
+
+    /* ============================================================
+       CAMPAGNE — centraal uitgelichte campagne op de homepage
+       ============================================================ */
+    .campagne {
+      position: relative; overflow: hidden;
+      background: var(--color-black); color: var(--color-white);
+      border-left: var(--border-accent-width) solid var(--color-gold);
+    }
+    .campagne__body { position: relative; z-index: 1; padding: var(--space-10) var(--space-8); }
+    .campagne__eyebrow {
+      display: flex; align-items: center; gap: var(--space-3);
+      flex-wrap: wrap; margin-bottom: var(--space-4);
+    }
+    .campagne__title {
+      font-family: var(--font-condensed); font-size: var(--text-3xl);
+      text-transform: uppercase; line-height: var(--leading-tight);
+      color: var(--color-white); margin-bottom: var(--space-4);
+    }
+    .campagne__text {
+      font-family: var(--font-text); font-size: var(--text-base);
+      line-height: var(--leading-loose); color: rgba(255,255,255,0.85);
+      max-width: 620px; margin-bottom: var(--space-6);
+    }
+    .campagne__actions { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .campagne__status {
+      display: flex; align-items: center; gap: var(--space-2);
+      font-family: var(--font-condensed); font-size: var(--text-sm);
+      text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-gold);
+    }
+    .campagne__status--done { color: #7ddc94; }
+    .campagne__progress { margin-top: var(--space-6); max-width: 620px; }
+    .campagne__bar { display: flex; gap: var(--space-2); margin-bottom: var(--space-2); }
+    .campagne__bar span {
+      flex: 1; height: 6px; background: rgba(255,255,255,0.2);
+      transition: var(--transition-fast);
+    }
+    .campagne__bar span.done { background: var(--color-gold); }
+    .campagne__bar-label {
+      font-family: var(--font-sans); font-size: var(--text-xs);
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ============================================================
+       AFVINKEN — voortgang bijhouden in een leerpad
+       ============================================================ */
+    .afvink {
+      background: var(--color-white); box-shadow: var(--shadow-card);
+      border-top: var(--border-accent-width) solid var(--color-gold);
+      padding: var(--space-6); margin-top: var(--space-8);
+    }
+    .afvink__title {
+      font-family: var(--font-condensed); font-size: var(--text-xl);
+      text-transform: uppercase; margin-bottom: var(--space-2);
+    }
+    .afvink__intro {
+      font-family: var(--font-text); font-size: var(--text-sm);
+      color: var(--color-gray-10); line-height: var(--leading-loose);
+      margin-bottom: var(--space-5);
+    }
+    .check {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-3) 0; cursor: pointer;
+      border-bottom: 1px solid var(--color-gray-07);
+      font-family: var(--font-sans); font-size: var(--text-sm);
+    }
+    .check:last-of-type { border-bottom: none; }
+    .check input[type="checkbox"] {
+      appearance: none; -webkit-appearance: none;
+      flex-shrink: 0; width: 22px; height: 22px; margin: 0;
+      border: 2px solid var(--color-gray-09); background: var(--color-white);
+      cursor: pointer; transition: var(--transition-fast);
+    }
+    .check input[type="checkbox"]:checked {
+      background: var(--color-red-primary); border-color: var(--color-red-primary);
+    }
+    .check input[type="checkbox"]:checked::after {
+      content: '✓'; color: var(--color-white); font-size: var(--text-sm);
+      display: flex; align-items: center; justify-content: center; height: 100%;
+    }
+    .check input[type="checkbox"]:focus-visible { outline: 2px solid var(--color-black); outline-offset: 2px; }
+    .check--final {
+      margin-top: var(--space-4); padding: var(--space-4);
+      background: var(--color-gray-07); border-bottom: none;
+      font-family: var(--font-condensed); font-size: var(--text-base);
+      text-transform: uppercase; letter-spacing: 0.02em; align-items: center;
+    }
+    .check--final input[type="checkbox"]:checked {
+      background: var(--color-success); border-color: var(--color-success);
+    }
+    .afvink__done {
+      margin-top: var(--space-4); font-family: var(--font-sans);
+      font-size: var(--text-xs); color: var(--color-gray-10);
+      display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;
+    }
+    .afvink__reset {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-family: var(--font-sans); font-size: var(--text-xs);
+      color: var(--color-red-primary); text-decoration: underline;
+    }
+
+    /* GoodHabitz-snelkoppeling rechts in de headerbalk */
+    .nav-external {
+      margin-left: auto; display: inline-flex; align-items: center; gap: var(--space-2);
+      min-height: 40px; padding: var(--space-2) var(--space-4);
+      background: rgba(255,255,255,0.15); color: var(--color-white);
+      font-family: var(--font-condensed); font-size: var(--text-sm);
+      text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none;
+      white-space: nowrap; transition: var(--transition-fast);
+    }
+    .nav-external:hover, .nav-external:focus-visible {
+      background: var(--color-white); color: var(--color-red-primary); text-decoration: none;
+    }
 
     /* Recept-kaarten grid */
     .recipe-section { margin-bottom: var(--space-8); }
@@ -748,6 +865,9 @@
     .elevation {
       box-shadow: 0 2px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
     }
+
+    /* [hidden] moet altijd winnen van componentregels met display */
+    [hidden] { display: none !important; }
 
     /* overview-section binnen article: geen eigen achtergrond nodig */
     article.article-default .overview-section {
@@ -873,6 +993,15 @@
 
       /* Card visual iets kleiner op mobiel */
       .card-visual { height: 80px; }
+
+      /* Campagne-band compacter */
+      .campagne__body { padding: var(--space-6) var(--space-5); }
+      .campagne__title { font-size: var(--text-2xl); }
+      .campagne__actions .btn { width: 100%; justify-content: center; }
+
+      /* GoodHabitz-knop: alleen icoon-achtig label */
+      .nav-external { padding: var(--space-2) var(--space-3); font-size: var(--text-xs); }
+      .nav-external .nav-external__long { display: none; }
     }
 
     /* ============================================================
@@ -922,6 +1051,14 @@
         <span class="nav-wordmark">Training Ground</span>
       </div>
 
+      <!-- Directe link naar GoodHabitz - rechts in de balk -->
+      <a class="nav-external"
+         href="https://my.goodhabitz.com/nl-nl/home?your-list=recommended"
+         target="_blank" rel="noopener"
+         title="Ga direct naar jouw GoodHabitz-aanbod">
+        GoodHabitz<span class="nav-external__long"> openen</span> <span aria-hidden="true">&#8599;</span>
+      </a>
+
     </nav>
   </header>
 
@@ -942,7 +1079,9 @@
 
             <!-- Navigatie — directe links die popover openen -->
             <nav class="column-nav" aria-label="Categorienavigatie">
-              <span class="label">Thema's</span>
+              <span class="label">Campagne</span>
+              <button class="column-nav__item" id="campagne-nav" hidden onclick="openCampagne()"><img src="huisstijl/icons/WHITE/ICON_PSV_white_trophy.svg" alt="" /><span id="campagne-nav-label">Campagne</span></button>
+              <span class="label" style="margin-top: var(--space-4)">Thema's</span>
               <button class="column-nav__item" onclick="openPopoverMobile('dit-is-psv')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_trophy.svg" alt="" />Dit is PSV</button>
               <button class="column-nav__item" onclick="openPopoverMobile('groeien-werk')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_stairs.svg" alt="" />Groeien in je werk</button>
               <button class="column-nav__item" onclick="openPopoverMobile('persoonlijke-ontwikkeling')"><img src="huisstijl/icons/WHITE/ICON_PSV_white_person.svg" alt="" />Persoonlijke ontwikkeling</button>
@@ -986,6 +1125,32 @@
                 </div>
               </div>
             </div>
+
+            <!-- ============================================================
+                 CAMPAGNE — centraal uitgelicht leerpad. Inhoud komt uit de
+                 CMS-tab 'Campagne' (sleutel/waarde); zonder die tab gelden de
+                 standaardwaarden in CAMPAGNE_DEFAULT onderaan de pagina.
+                 Blok blijft verborgen zolang actief = nee.
+                 ============================================================ -->
+            <article class="article-default elevation" id="campagne-article" hidden>
+              <div class="campagne" id="campagne">
+                <div class="campagne__body">
+                  <div class="campagne__eyebrow">
+                    <span class="tag tag--gold" id="campagne-label">Campagne</span>
+                    <span class="campagne__status" id="campagne-status" hidden></span>
+                  </div>
+                  <h2 class="campagne__title" id="campagne-titel"></h2>
+                  <p class="campagne__text" id="campagne-tekst"></p>
+                  <div class="campagne__actions">
+                    <button class="btn btn--white" id="campagne-cta" onclick="openCampagne()">Start het leerpad &#8594;</button>
+                  </div>
+                  <div class="campagne__progress" id="campagne-progress" hidden>
+                    <div class="campagne__bar" id="campagne-bar" aria-hidden="true"></div>
+                    <div class="campagne__bar-label" id="campagne-bar-label"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <!-- ============================================================
                  NIEUWE SECTIE — 4 ontwikkelthema's met drill-down popovers
@@ -1206,7 +1371,7 @@
         <span class="label">Welzijn &amp; Gezondheid</span>
         <h2 id="pt-vitality">Vitality</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('vitality')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Goed presteren begint bij goed in je energie zitten. Hier ontdek je hoe je mentaal en fysiek fit blijft, beter omgaat met druk en bewuste keuzes maakt. Dat vraagt dat je luistert naar jezelf en eigenaarschap neemt over je welzijn – zodat je vandaag scherp bent en morgen sterk blijft.</p>
@@ -1241,7 +1406,7 @@
         <span class="label">Professionele Ontwikkeling</span>
         <h2 id="pt-vakkennis">Vakkennis &amp; Vaardigheden</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('vakkennis')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Sterk zijn in je rol vraagt blijvende ontwikkeling. In deze categorie werk je aan je vakmanschap en professionele vaardigheden, zodat je met vertrouwen kunt blijven meebewegen. Dat vraagt nieuwsgierigheid, initiatief en de bereidheid om te blijven leren.</p>
@@ -1268,7 +1433,7 @@
         <span class="label">Verbinding &amp; Inspiratie</span>
         <h2 id="pt-motivatie">Motivatie &amp; Betrokkenheid</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('motivatie')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Bij PSV maken we elkaar beter door kennis te delen. Hier leer je van collega's en draag je zelf bij aan betrokkenheid en samenwerking. Dat vraagt openheid, verbinding en de wil om samen te groeien.</p>
@@ -1286,7 +1451,7 @@
         <span class="label">Digitale Vaardigheden</span>
         <h2 id="pt-ai">AI &amp; Phished Academy</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('ai')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Slim en veilig werken is essentieel in een digitale wereld. Je ontwikkelt hier digitale vaardigheden en bewustzijn rondom technologie, data en AI. Dat vraagt nieuwsgierigheid én verantwoordelijkheid in hoe je met systemen omgaat.</p>
@@ -1305,7 +1470,7 @@
         <span class="label">Onze Identiteit</span>
         <h2 id="pt-kernwaarden">Kernwaarden PSV (Trainingen)</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('kernwaarden')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Onze kernwaarden leven in wat jij elke dag doet. In deze categorie vertaal je ze naar concreet gedrag in jouw werk en samenwerking. Dat vraagt eigenaarschap: doen wat we afspreken en elkaar helpen beter te worden.</p>
@@ -1327,7 +1492,7 @@
         <span class="label">Persoonlijke Begeleiding</span>
         <h2 id="pt-coaching">Coaching &amp; Mentoring</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('coaching')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Ontwikkeling begint bij stilstaan en reflecteren. Met coaching en teamworkouts vergroot je je zelfinzicht en effectiviteit. Dat vraagt openheid en de bereidheid om gericht aan jezelf en je team te werken.</p>
@@ -1360,10 +1525,7 @@
   <!-- MENTORING — sub-level van Coaching -->
   <dialog class="popover popover--sub" id="popover-mentoring" aria-labelledby="pt-mentoring">
     <div class="popover-header popover-header--gold">
-      <button class="popover-back" onclick="closePopover('mentoring')" aria-label="Terug">
-        ← Terug
-      </button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">Leren van elkaar · Groeien met elkaar</span>
         <h2 id="pt-mentoring">PSV Mentoring</h2>
       </div>
@@ -1415,10 +1577,7 @@
   <!-- INTERNE COACHING — sub-level van Coaching -->
   <dialog class="popover popover--sub" id="popover-interne-coaching" aria-labelledby="pt-interne-coaching">
     <div class="popover-header popover-header--gold">
-      <button class="popover-back" onclick="closePopover('interne-coaching')" aria-label="Terug">
-        ← Terug
-      </button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">Persoonlijke Begeleiding</span>
         <h2 id="pt-interne-coaching">Interne (loopbaan)coaching</h2>
       </div>
@@ -1505,7 +1664,7 @@
         <span class="label">Partners &amp; Samenwerkingen</span>
         <h2 id="pt-extern">Externe Aanbieders</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('extern')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Soms ligt groei buiten je vertrouwde speelveld. Hier kies je bewust voor externe leerervaringen die je verdiepen of verbreden. Dat vraagt regie: weten wat je wilt leren en dit vertalen naar je werk bij PSV.</p>
@@ -1524,7 +1683,7 @@
         <span class="label">Dagelijkse Inspiratie</span>
         <h2 id="pt-groei">Groei Inspiratie Hub</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('groei')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Vind dagelijkse inspiratie voor persoonlijke groei — van boeken en podcasts tot evenementen en films. Samengesteld door collega's en HR.</p>
@@ -1542,10 +1701,7 @@
   <!-- RECEPTEN VAN COLLEGA'S — sub-level van Vitality -->
   <dialog class="popover popover--sub" id="popover-recepten" aria-labelledby="pt-recepten">
     <div class="popover-header">
-      <button class="popover-back" onclick="closePopover('recepten')" aria-label="Terug">
-        ← Terug
-      </button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">Lifestyle &amp; Gezondheid</span>
         <h2 id="pt-recepten">Recepten van collega's</h2>
       </div>
@@ -1726,7 +1882,7 @@
         <span class="label">Onze identiteit</span>
         <h2 id="pt-dit-is-psv">Dit is PSV</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('dit-is-psv')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Weten waar je werkt maakt je sterker in wat je doet. Ontdek de visie, waarden en identiteit die PSV maken tot wat het is.</p>
@@ -1761,7 +1917,7 @@
         <span class="label">Professionele ontwikkeling</span>
         <h2 id="pt-groeien-werk">Groeien in je werk</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('groeien-werk')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Sterk zijn in je rol vraagt blijvende ontwikkeling. Werk aan je vakmanschap, digitale vaardigheden en veiligheid — op jouw tempo.</p>
@@ -1803,7 +1959,7 @@
         <span class="label">Persoonlijke groei</span>
         <h2 id="pt-persoonlijke-ontwikkeling">Werk aan je persoonlijke ontwikkeling</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('persoonlijke-ontwikkeling')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Ontwikkeling begint bij stilstaan en reflecteren. Met coaching, mentoring en inspiratie werk je gericht aan jezelf en je team.</p>
@@ -1847,7 +2003,7 @@
         <span class="label">Vitaliteit &amp; welzijn</span>
         <h2 id="pt-zorg-voor-jezelf">Zorg goed voor jezelf</h2>
       </div>
-      <button class="popover-close" onclick="closePopover('zorg-voor-jezelf')" aria-label="Sluiten">✕</button>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
       <p class="lead">Goed presteren begint bij goed in je energie zitten. Ontdek hoe je mentaal en fysiek fit blijft en bewuste keuzes maakt.</p>
@@ -1871,8 +2027,7 @@
   <!-- SUB · MICROSOFTTRAININGEN (onder Groeien in je werk) -->
   <dialog class="popover popover--sub" id="popover-microsoft" aria-labelledby="pt-microsoft">
     <div class="popover-header popover-header--dark">
-      <button class="popover-back" onclick="closePopover('microsoft')" aria-label="Terug">← Terug</button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">GoodHabitz e-learning</span>
         <h2 id="pt-microsoft">Microsofttrainingen</h2>
       </div>
@@ -1895,8 +2050,7 @@
   <!-- SUB · KNVB / UEFA OPLEIDINGEN (onder Groeien in je werk) -->
   <dialog class="popover popover--sub" id="popover-knvb" aria-labelledby="pt-knvb">
     <div class="popover-header">
-      <button class="popover-back" onclick="closePopover('knvb')" aria-label="Terug">← Terug</button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">Voetbalopleidingen &amp; ontwikkeling</span>
         <h2 id="pt-knvb">KNVB / UEFA opleidingen</h2>
       </div>
@@ -1919,8 +2073,7 @@
   <!-- SUB · VEILIGHEID BHV/AED (onder Groeien in je werk) -->
   <dialog class="popover popover--sub" id="popover-veiligheid" aria-labelledby="pt-veiligheid">
     <div class="popover-header popover-header--black">
-      <button class="popover-back" onclick="closePopover('veiligheid')" aria-label="Terug">← Terug</button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">BHV / ARBO</span>
         <h2 id="pt-veiligheid">Veiligheid (BHV/AED)</h2>
       </div>
@@ -1940,8 +2093,7 @@
   <!-- SUB · MAAK IMPACT MET MDT (onder Persoonlijke ontwikkeling) -->
   <dialog class="popover popover--sub" id="popover-mdt" aria-labelledby="pt-mdt">
     <div class="popover-header popover-header--gold">
-      <button class="popover-back" onclick="closePopover('mdt')" aria-label="Terug">← Terug</button>
-      <div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">
+      <div class="popover-header__content">
         <span class="label">Maatschappelijke Diensttijd</span>
         <h2 id="pt-mdt">Maak impact met MDT</h2>
       </div>
@@ -2022,30 +2174,133 @@
       openPopover(id);
     }
 
-    // ── Popover open / close ─────────────────────────────────────
-    function openPopover(id) {
-      const dlg = document.getElementById('popover-' + id);
-      if (!dlg) return;
-      dlg.showModal();
-      dlg.querySelector('.popover-close').focus();
-    }
-    function closePopover(id) {
-      const dlg = document.getElementById('popover-' + id);
-      if (dlg) dlg.close();
-    }
-    // Sluit alle open popovers (voor 'Alles sluiten' vanuit een sub-popover)
-    function closeAllPopovers() {
-      document.querySelectorAll('dialog.popover[open]').forEach(d => d.close());
+    // ── Popover-navigatie ────────────────────────────────────────
+    // Elke popover die vanuit een andere popover wordt geopend krijgt
+    // automatisch een terugknop met de naam van het vorige niveau.
+    // Escape en een klik op de achtergrond gaan één stap terug;
+    // de kruisknop sluit alles en brengt je terug op de homepage.
+    const popoverStack = [];
+
+    const popoverEl = id => document.getElementById('popover-' + id);
+
+    function popoverTitel(id) {
+      const dlg = popoverEl(id);
+      const h2  = dlg && dlg.querySelector('.popover-header h2');
+      return h2 ? h2.textContent.trim() : '';
     }
 
-    // Sluiten op backdrop-klik
-    document.querySelectorAll('dialog.popover').forEach(dlg => {
+    function focusPopover(id) {
+      const dlg = popoverEl(id);
+      if (!dlg) return;
+      const el = dlg.querySelector('.popover-back') || dlg.querySelector('.popover-close');
+      if (el) el.focus();
+    }
+
+    // Stapel opschonen: alles wat niet meer open staat eruit. Escape en een
+    // klik op de achtergrond sluiten een popover buiten onze knoppen om, dus
+    // controleren we de werkelijke toestand in plaats van events te tellen.
+    function pruneStack() {
+      for (let i = popoverStack.length - 1; i >= 0; i--) {
+        const dlg = popoverEl(popoverStack[i]);
+        if (!dlg || !dlg.open) popoverStack.splice(i, 1);
+      }
+    }
+
+    // Terugknop en label van de kruisknop bijwerken op basis van de stapel
+    function syncPopoverHeader(id) {
+      const dlg = popoverEl(id);
+      if (!dlg) return;
+      const content = dlg.querySelector('.popover-header__content');
+      const close   = dlg.querySelector('.popover-close');
+      const i       = popoverStack.lastIndexOf(id);
+      const ouder   = i > 0 ? popoverStack[i - 1] : null;
+      let back      = dlg.querySelector('.popover-back');
+
+      if (ouder && content) {
+        if (!back) {
+          back = document.createElement('button');
+          back.type = 'button';
+          back.className = 'popover-back';
+          back.innerHTML = '<span aria-hidden="true">\u2190</span><span class="popover-back__label"></span>';
+          back.addEventListener('click', popoverTerug);
+          content.insertBefore(back, content.firstChild);
+        }
+        const tekst = 'Terug naar ' + (popoverTitel(ouder) || 'vorige stap');
+        back.querySelector('.popover-back__label').textContent = tekst;
+        back.setAttribute('aria-label', tekst);
+        if (close) { close.setAttribute('aria-label', 'Alles sluiten'); close.title = 'Alles sluiten'; }
+      } else {
+        if (back) back.remove();
+        if (close) { close.setAttribute('aria-label', 'Sluiten'); close.title = 'Sluiten'; }
+      }
+    }
+
+    function openPopover(id) {
+      const dlg = popoverEl(id);
+      if (!dlg || dlg.open) return;
+      pruneStack();
+      popoverStack.push(id);
+      syncPopoverHeader(id);
+      dlg.showModal();
+      focusPopover(id);
+    }
+
+    // Eén niveau terug: sluit de bovenste popover, de vorige blijft staan
+    function popoverTerug() {
+      pruneStack();
+      const id = popoverStack[popoverStack.length - 1];
+      if (id) closePopover(id);
+    }
+
+    // Sluit een popover en alles wat daar bovenop is geopend
+    function closePopover(id) {
+      pruneStack();
+      const i = popoverStack.lastIndexOf(id);
+      if (i === -1) {
+        const dlg = popoverEl(id);
+        if (dlg && dlg.open) dlg.close();
+        return;
+      }
+      popoverStack.slice(i).reverse().forEach(pid => {
+        const dlg = popoverEl(pid);
+        if (dlg && dlg.open) dlg.close();
+      });
+      popoverStack.length = i;
+      const ouder = popoverStack[popoverStack.length - 1];
+      if (ouder) focusPopover(ouder);
+    }
+
+    // Sluit alle open popovers (kruisknop → terug naar de homepage)
+    function closeAllPopovers() {
+      document.querySelectorAll('dialog.popover[open]').forEach(d => d.close());
+      popoverStack.length = 0;
+    }
+
+    // Opent een reeks popovers achter elkaar, zodat de terugknoppen kloppen
+    // (bijv. Dit is PSV → Kernwaarden → leerpad Betrouwbaar)
+    function openPopoverPad(ids) {
+      closeAllPopovers();
+      ids.filter(Boolean).forEach(openPopover);
+    }
+
+    // Klik op de achtergrond sluit alleen de bovenste popover; de popover
+    // eronder blijft open, zodat je terugkomt waar je vandaan kwam.
+    function initPopover(dlg) {
+      if (dlg.dataset.popoverInit) return;
+      dlg.dataset.popoverInit = '1';
+
       dlg.addEventListener('click', e => {
+        if (e.target !== dlg) return;
         const r = dlg.getBoundingClientRect();
         if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)
           dlg.close();
       });
-    });
+    }
+
+    function initPopovers() {
+      document.querySelectorAll('dialog.popover').forEach(initPopover);
+    }
+    initPopovers();
 
     // ── Smart Search ─────────────────────────────────────────────
     // Index: elk item heeft title, category (weergave), popover (id) en keywords (synoniemen)
@@ -2499,6 +2754,9 @@
       if (el && rows.length) el.innerHTML = renderCoaches(rows);
     }).catch(() => {});
 
+    // Helpers delen met de campagnemodule onderaan de pagina
+    window.PSV_CMS = { csvUrl, parseCSV, rich };
+
   })();
   </script>
 
@@ -2593,11 +2851,35 @@
         +   '<ul style="list-style:none;padding:0;margin:0">'+w.a.map(actRow).join('')+'</ul>'
         + '</div></details>';
     }
+    // Afvinkblok onderaan een leerpad: per week + 'de 4 weken doorlopen'.
+    // De koppeling met opgeslagen voortgang gebeurt in de voortgangsmodule.
+    function afvinkBlok(id,lp){
+      const n = lp.weken.length;
+      const weken = lp.weken.map(function(w,i){
+        return '<label class="check">'
+          + '<input type="checkbox" data-week="'+i+'" />'
+          + '<span>Week '+(i+1)+' &middot; '+esc(w.t)+'</span>'
+          + '</label>';
+      }).join('');
+      return '<div class="afvink" data-afvink="'+id+'" data-weken="'+n+'" data-titel="'+esc(NAMEN[id]||id)+'">'
+        + '<div class="afvink__title">Houd je voortgang bij</div>'
+        + '<p class="afvink__intro">Vink aan wat je hebt gedaan. Je voortgang wordt alleen in deze browser bewaard en is meteen zichtbaar op de homepage.</p>'
+        + weken
+        + '<label class="check check--final">'
+        +   '<input type="checkbox" data-final="1" />'
+        +   '<span>Ik heb de '+n+' weken doorlopen</span>'
+        + '</label>'
+        + '<div class="afvink__done" hidden>'
+        +   '<span data-done-tekst></span>'
+        +   '<button type="button" class="afvink__reset">Voortgang wissen</button>'
+        + '</div>'
+        + '</div>';
+    }
+
     function leerpadDialog(id,lp){
       return '<dialog class="popover popover--sub" id="popover-leerpad-'+id+'" aria-labelledby="lt-'+id+'">'
         + '<div class="popover-header '+(GROEPEN[lp.groep].hdr||'')+'">'
-        +   '<button class="popover-back" onclick="closePopover(\'leerpad-'+id+'\')" aria-label="Terug">← Terug</button>'
-        +   '<div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">'
+        +   '<div class="popover-header__content">'
         +     '<span class="label">Leerpad · 4 weken</span>'
         +     '<h2 id="lt-'+id+'">'+esc(NAMEN[id]||id)+'</h2>'
         +   '</div>'
@@ -2611,6 +2893,7 @@
         +   (lp.verdieping?'<div class="card" style="border-top:4px solid var(--color-gold);margin-bottom:var(--space-8)"><div class="card__body"><span class="tag tag--gold card__label">Verdieping</span><p style="'+P+'">'+esc(lp.verdieping)+'</p></div></div>':'')
         +   '<h3 style="font-family:var(--font-condensed);font-size:var(--text-xl);text-transform:uppercase;margin-bottom:var(--space-4)">Maak het blijvend</h3>'
         +   '<div class="grid-3">'+TIPS.map(function(t){return '<div class="card"><div class="card__body"><span class="tag card__label">Tip</span><div class="card__title">'+esc(t[0])+'</div><p style="'+P+'">'+esc(t[1])+'</p></div></div>';}).join('')+'</div>'
+        +   afvinkBlok(id,lp)
         + '</div></dialog>';
     }
     function groepDialog(gid){
@@ -2629,8 +2912,7 @@
       }).join('');
       return '<dialog class="popover" id="popover-'+g.pop+'" aria-labelledby="gt-'+g.pop+'">'
         + '<div class="popover-header '+g.hdr+'">'
-        +   '<button class="popover-back" onclick="closePopover(\''+g.pop+'\')" aria-label="Terug">← Terug</button>'
-        +   '<div class="popover-header__content" style="padding-left: calc(var(--space-8) + 80px)">'
+        +   '<div class="popover-header__content">'
         +     '<span class="label">'+esc(g.label)+'</span>'
         +     '<h2 id="gt-'+g.pop+'">'+esc(g.titel)+'</h2>'
         +   '</div>'
@@ -2649,13 +2931,210 @@
     const gen=[];
     while(frag.firstChild){ const n=frag.firstChild; document.body.appendChild(n); if(n.tagName==='DIALOG') gen.push(n); }
 
-    // Backdrop-klik sluit ook de gegenereerde dialogs
-    gen.forEach(function(dlg){
-      dlg.addEventListener('click',function(e){
-        const r=dlg.getBoundingClientRect();
-        if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) dlg.close();
+    // Gegenereerde dialogs meenemen in de popover-navigatie (terugknop,
+    // Escape, klik op de achtergrond) — zie initPopover() hierboven.
+    gen.forEach(initPopover);
+  })();
+  </script>
+
+  <!-- ============================================================
+       VOORTGANG + CAMPAGNE
+       - Voortgang: medewerkers vinken per week af en zetten onderaan
+         het leerpad een vinkje als ze de 4 weken hebben doorlopen.
+         Opslag gebeurt in localStorage (deze browser), er gaat geen
+         data naar buiten. Een centraal dashboard vraagt een backend;
+         dat is bewust nog niet ingebouwd.
+       - Campagne: HR zet één leerpad centraal op de homepage. Alle
+         teksten zijn te wijzigen in de CMS-tab 'Campagne'
+         (kolommen: sleutel, waarde). Zonder die tab gelden de
+         standaardwaarden in CAMPAGNE hieronder.
+       ============================================================ -->
+  <script>
+  (function () {
+
+    // ── Voortgang: opslag ────────────────────────────────────────
+    const OPSLAG = 'psv-tg-voortgang';
+
+    function lees() {
+      try { return JSON.parse(localStorage.getItem(OPSLAG)) || {}; }
+      catch (e) { return {}; }
+    }
+    function schrijf(data) {
+      try { localStorage.setItem(OPSLAG, JSON.stringify(data)); } catch (e) {}
+      window.dispatchEvent(new CustomEvent('psv-voortgang'));
+    }
+    function voortgangVan(id) {
+      const v = lees()[id] || {};
+      return {
+        weken:    Array.isArray(v.weken) ? v.weken : [],
+        afgerond: v.afgerond || null,
+      };
+    }
+    function bewaar(id, v) {
+      const data = lees();
+      if (!v.weken.some(Boolean) && !v.afgerond) delete data[id];
+      else data[id] = { weken: v.weken, afgerond: v.afgerond };
+      schrijf(data);
+    }
+
+    const datumNL = iso => {
+      const d = new Date(iso);
+      return isNaN(d) ? '' : d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+    };
+
+    // ── Voortgang: afvinkblokken in de leerpaden ─────────────────
+    function initAfvink(blok) {
+      const id     = blok.dataset.afvink;
+      const aantal = parseInt(blok.dataset.weken, 10) || 0;
+      const weekIn = Array.from(blok.querySelectorAll('input[data-week]'));
+      const finalIn = blok.querySelector('input[data-final]');
+      const doneRij = blok.querySelector('.afvink__done');
+      const doneTxt = blok.querySelector('[data-done-tekst]');
+      const reset   = blok.querySelector('.afvink__reset');
+
+      function toon() {
+        const v = voortgangVan(id);
+        weekIn.forEach((el, i) => { el.checked = !!v.weken[i]; });
+        finalIn.checked = !!v.afgerond;
+        doneRij.hidden = !v.afgerond;
+        if (v.afgerond) doneTxt.textContent = 'Afgerond op ' + datumNL(v.afgerond) + '.';
+      }
+
+      function opslaan(weken, afgerond) {
+        bewaar(id, { weken: weken, afgerond: afgerond });
+        toon();
+      }
+
+      weekIn.forEach((el, i) => el.addEventListener('change', () => {
+        const v = voortgangVan(id);
+        const weken = [];
+        for (let j = 0; j < aantal; j++) weken[j] = j === i ? el.checked : !!v.weken[j];
+        const alles = aantal > 0 && weken.filter(Boolean).length === aantal;
+        // Alle weken afgevinkt? Dan staat het leerpad automatisch op afgerond.
+        opslaan(weken, alles ? (v.afgerond || new Date().toISOString()) : null);
+      }));
+
+      finalIn.addEventListener('change', () => {
+        const v = voortgangVan(id);
+        if (finalIn.checked) {
+          const weken = [];
+          for (let j = 0; j < aantal; j++) weken[j] = true;
+          opslaan(weken, v.afgerond || new Date().toISOString());
+        } else {
+          opslaan(v.weken.slice(0, aantal), null);
+        }
       });
-    });
+
+      reset.addEventListener('click', () => opslaan([], null));
+
+      window.addEventListener('psv-voortgang', toon);
+      toon();
+    }
+
+    document.querySelectorAll('.afvink').forEach(initAfvink);
+
+    // ── Campagne: instellingen ───────────────────────────────────
+    // Aan te passen via de CMS-tab 'Campagne' (sleutel / waarde).
+    const CAMPAGNE = {
+      actief:     'ja',
+      label:      'Campagne · Kernwaarde',
+      titel:      'Betrouwbaar in 4 weken',
+      tekst:      'Een afspraak is een afspraak. In vier weken werk je aan eerlijkheid, transparantie en integriteit — met assessments, video’s, lees- en oefenopdrachten. Doe mee en vink onderaan het leerpad af wat je hebt gedaan.',
+      cta:        'Start het leerpad',
+      nav_label:  'Betrouwbaar in 4 weken',
+      // Route naar het leerpad: de terugknoppen volgen deze reeks
+      pad:        'dit-is-psv, kernwaarden-leerpaden, leerpad-betrouwbaar',
+    };
+
+    const artikel  = document.getElementById('campagne-article');
+    const navBtn   = document.getElementById('campagne-nav');
+    const navLabel = document.getElementById('campagne-nav-label');
+
+    const padLijst = () => CAMPAGNE.pad.split(',').map(x => x.trim()).filter(Boolean);
+    const leerpadId = () => (padLijst()[padLijst().length - 1] || '').replace(/^leerpad-/, '');
+
+    function aan() {
+      const v = String(CAMPAGNE.actief).trim().toLowerCase();
+      return !['nee', 'no', 'uit', 'false', '0', ''].includes(v)
+        && !!CAMPAGNE.titel && padLijst().length > 0;
+    }
+
+    // Homepage-knop en sidebar-item openen het leerpad via de volledige route
+    window.openCampagne = function () {
+      if (!aan()) return;
+      if (window.innerWidth <= 960 && typeof closeNavOverlay === 'function') closeNavOverlay();
+      openPopoverPad(padLijst());
+    };
+
+    function renderCampagne() {
+      if (!artikel) return;
+      if (!aan()) { artikel.hidden = true; if (navBtn) navBtn.hidden = true; return; }
+
+      artikel.hidden = false;
+      document.getElementById('campagne-label').textContent  = CAMPAGNE.label;
+      document.getElementById('campagne-titel').textContent  = CAMPAGNE.titel;
+      document.getElementById('campagne-tekst').textContent  = CAMPAGNE.tekst;
+      if (navBtn)   navBtn.hidden = false;
+      if (navLabel) navLabel.textContent = CAMPAGNE.nav_label || CAMPAGNE.titel;
+
+      const id     = leerpadId();
+      const blok   = document.querySelector('.afvink[data-afvink="' + id + '"]');
+      const aantal = blok ? (parseInt(blok.dataset.weken, 10) || 0) : 0;
+      const v      = voortgangVan(id);
+      const gedaan = v.weken.filter(Boolean).length;
+
+      // Voortgangsbalk — alleen als het leerpad weken heeft
+      const wrap  = document.getElementById('campagne-progress');
+      const bar   = document.getElementById('campagne-bar');
+      const label = document.getElementById('campagne-bar-label');
+      if (aantal > 0) {
+        wrap.hidden = false;
+        bar.innerHTML = '';
+        for (let i = 0; i < aantal; i++) {
+          const seg = document.createElement('span');
+          if (v.weken[i]) seg.className = 'done';
+          bar.appendChild(seg);
+        }
+        label.textContent = v.afgerond
+          ? 'Afgerond op ' + datumNL(v.afgerond)
+          : gedaan
+            ? gedaan + ' van ' + aantal + ' weken afgevinkt'
+            : 'Nog niet gestart — vink je weken af onderaan het leerpad';
+      } else {
+        wrap.hidden = true;
+      }
+
+      // Statuslabel naast het campagne-label
+      const status = document.getElementById('campagne-status');
+      status.classList.toggle('campagne__status--done', !!v.afgerond);
+      if (v.afgerond)      { status.hidden = false; status.textContent = '✓ Afgerond'; }
+      else if (gedaan)     { status.hidden = false; status.textContent = 'Bezig · week ' + gedaan + ' van ' + aantal; }
+      else                 { status.hidden = true;  status.textContent = ''; }
+
+      const cta = document.getElementById('campagne-cta');
+      cta.textContent = (v.afgerond ? 'Bekijk het leerpad' : gedaan ? 'Ga verder in het leerpad' : CAMPAGNE.cta) + ' →';
+    }
+
+    // ── Campagne: teksten uit de CMS-tab 'Campagne' ──────────────
+    function laadCampagneCMS() {
+      const cms = window.PSV_CMS;
+      if (!cms) return;
+      fetch(cms.csvUrl('Campagne')).then(r => r.text()).then(text => {
+        const rows = cms.parseCSV(text);
+        if (!rows.length || !('sleutel' in rows[0])) return;   // tab bestaat niet
+        rows.forEach(r => {
+          const k = (r.sleutel || '').trim();
+          if (k && Object.prototype.hasOwnProperty.call(CAMPAGNE, k) && (r.waarde || '').trim())
+            CAMPAGNE[k] = r.waarde.trim();
+        });
+        renderCampagne();
+      }).catch(() => {});
+    }
+
+    window.addEventListener('psv-voortgang', renderCampagne);
+    renderCampagne();
+    laadCampagneCMS();
+
   })();
   </script>
 
