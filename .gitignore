@@ -3,5 +3,7 @@
 Thumbs.db
 *.pptx
 *.pdf
+# Uitzondering: documenten die de site zelf aanbiedt (bijv. Visie 2030)
+!documenten/*.pdf
 internecoaching/
 .vscode/
