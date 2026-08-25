@@ -659,6 +659,39 @@
     /* Ruimte vrijhouden voor de sluitknop rechtsboven */
     .popover-header__content { padding-right: calc(44px + var(--space-4)); }
 
+    /* ============================================================
+       ERVARING — quote van een collega
+       ============================================================ */
+    .ervaring {
+      background: var(--color-white); box-shadow: var(--shadow-card);
+      border-left: var(--border-accent-width) solid var(--color-red-primary);
+      padding: var(--space-5); margin: 0;
+      display: flex; flex-direction: column; height: 100%;
+    }
+    .ervaring--dark { border-left-color: var(--color-neutral-dark); }
+    .ervaring__label {
+      font-family: var(--font-condensed); font-size: var(--text-xs);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--color-gray-09); margin-bottom: var(--space-3);
+    }
+    .ervaring p {
+      font-family: var(--font-text); font-size: var(--text-sm);
+      color: var(--color-gray-11); line-height: var(--leading-loose);
+      font-style: italic; margin-bottom: var(--space-4);
+    }
+    .ervaring footer {
+      margin-top: auto; padding-top: var(--space-3);
+      border-top: 1px solid var(--color-gray-07);
+    }
+    .ervaring__naam {
+      display: block; font-family: var(--font-condensed);
+      font-size: var(--text-base); text-transform: uppercase;
+    }
+    .ervaring__rol {
+      display: block; font-family: var(--font-sans);
+      font-size: var(--text-xs); color: var(--color-gray-10);
+    }
+
     /* Sub-level popover iets smaller zodat nesting zichtbaar is */
     dialog.popover.popover--sub { max-width: min(820px, 92vw); }
 
@@ -1873,36 +1906,58 @@
           <div class="card__body">
             <span class="tag card__label">17–30 jaar</span>
             <div class="card__title">MDT Missie</div>
-            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Ga actief aan de slag en maak direct maatschappelijke impact. Je werkt samen aan uitdagende activiteiten en projecten, ontwikkelt nieuwe vaardigheden en ontdekt hoe jij met jouw talenten het verschil maakt.</p>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Ga actief aan de slag en maak direct maatschappelijke impact. Je werkt samen aan uitdagende activiteiten en projecten, ontwikkelt nieuwe vaardigheden en ontdekt hoe jij met jouw talenten het verschil maakt. <strong>MDT Missie is er voor iedereen tussen de 17 en 30 jaar.</strong></p>
             <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-2)"><strong>Dit past bij jou als je:</strong></p>
             <ul style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);padding-left:var(--space-5);margin-bottom:var(--space-4)">
               <li>graag nieuwe ervaringen opdoet;</li>
               <li>jezelf verder wilt ontwikkelen;</li>
               <li>energie krijgt van samenwerken;</li>
-              <li>maatschappelijke impact wilt maken.</li>
+              <li>maatschappelijke impact wilt maken;</li>
+              <li>tussen de 17 en 30 jaar oud bent.</li>
             </ul>
-            <span class="tag tag--outlined">🎬 Teaser volgt</span>
+            <a class="btn btn--outlined" href="https://www.youtube.com/watch?v=sVe-KJtCunM" target="_blank" rel="noopener">&#9654; Bekijk de teaser</a>
           </div>
         </div>
         <div class="card" style="border-top: 4px solid var(--color-neutral-dark)">
           <div class="card__body">
             <span class="tag tag--black card__label">30 jaar en ouder</span>
             <div class="card__title">PartnerBivak</div>
-            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Stap uit je dagelijkse omgeving en ervaar de wereld van een ander. Samen met een maatschappelijke organisatie krijg je een uniek inkijkje in de uitdagingen, talenten en verhalen van mensen die je normaal niet snel ontmoet.</p>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Stap uit je dagelijkse omgeving en ervaar de wereld van een ander. Samen met een maatschappelijke organisatie krijg je een uniek inkijkje in de uitdagingen, talenten en verhalen van mensen die je normaal niet snel ontmoet. <strong>De PartnerBivak is bedoeld voor volwassenen van 30 jaar en ouder.</strong></p>
             <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-2)"><strong>Dit past bij jou als je:</strong></p>
             <ul style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);padding-left:var(--space-5);margin-bottom:var(--space-4)">
               <li>openstaat voor nieuwe inzichten;</li>
               <li>verbinding wilt maken met anderen;</li>
               <li>je maatschappelijke betrokkenheid wilt vergroten;</li>
-              <li>wilt leren door te ervaren.</li>
+              <li>wilt leren door te ervaren;</li>
+              <li>volwassen bent (30+) en werkt met jongvolwassenen — denk aan trainers, opleidingscoördinatoren, HR-professionals en team- of afdelingsmanagers.</li>
             </ul>
-            <span class="tag tag--outlined">🎬 Teaser volgt</span>
+            <a class="btn btn--outlined" href="https://www.youtube.com/watch?v=C23bIw4aw8s&amp;t=1s" target="_blank" rel="noopener">&#9654; Bekijk de teaser</a>
           </div>
         </div>
       </div>
 
       <div class="alert alert--info">
         <strong>Welke keuze maak jij?</strong> Beide programma's dragen bij aan persoonlijke ontwikkeling, maatschappelijke betrokkenheid en samenwerking. Kies de vorm die het beste aansluit bij jouw interesses.
+      </div>
+
+      <h3 style="font-family:var(--font-condensed);font-size:var(--text-xl);text-transform:uppercase;margin-bottom:var(--space-4); margin-top: var(--space-10)">Ervaringen van collega's</h3>
+      <div class="grid-2">
+        <blockquote class="ervaring">
+          <div class="ervaring__label">MDT Missie</div>
+          <p>MDT Missie heeft mij geholpen om uit mijn comfortzone te stappen en anders naar uitdagingen te kijken. De ervaringen tijdens het bivak en de maatschappelijke opdracht hebben blijvende indruk gemaakt en een aantal pas ik nog steeds dagelijks toe. Je investeert in jezelf én in de maatschappij. Ik kijk met veel plezier terug op dit traject en kan deelname van harte aanbevelen. Voor iedereen die denkt: wat voor lessen dan? <a href="https://www.youtube.com/watch?v=pxBQLFLei70" target="_blank" rel="noopener">Kijk dit filmpje eens!</a></p>
+          <footer>
+            <span class="ervaring__naam">Max van der Heijden</span>
+            <span class="ervaring__rol">Veiligheidscoördinator</span>
+          </footer>
+        </blockquote>
+        <blockquote class="ervaring ervaring--dark">
+          <div class="ervaring__label">PartnerBivak</div>
+          <p>Een aantal maanden geleden heb ik het voorrecht gehad om deel te mogen nemen aan de MDT PartnerBivak. Dit is een onvergetelijke ervaring geworden: van uren ploeteren door de Oirschotse duinen met een hoop materialen tot persoonlijke doelen en verhalen delen met je kampgenoten. Ik ben mezelf op verschillende gebieden tegengekomen en het heeft me 28 uur de mogelijkheid gegeven om echt tot mezelf te komen — waar sta ik voor en waarom maak ik in het dagelijks leven bepaalde keuzes? Ik raad iedereen aan om zijn of haar kans te grijpen om hier je pure zelf tegen te komen en samen met vele onbekenden het diepe in te springen.</p>
+          <footer>
+            <span class="ervaring__naam">Koen van de Wal</span>
+            <span class="ervaring__rol">Hoofd Supporterszaken</span>
+          </footer>
+        </blockquote>
       </div>
     </div>
   </dialog>
