@@ -1161,7 +1161,7 @@
                       <img src="huisstijl/icons/WHITE/ICON_PSV_white_trophy.svg" alt="" />
                     </div>
                     <div class="card__body">
-                      <div class="card__count">5 onderdelen</div>
+                      <div class="card__count">6 onderdelen</div>
                       <div class="card__title-highlight"><span>Dit is</span><br><span>PSV</span></div>
                       <div class="card-ghost-cta">Bekijk thema →</div>
                     </div>
@@ -1592,8 +1592,15 @@
     <div class="popover-body">
       <p class="lead">Weten waar je werkt maakt je sterker in wat je doet. Ontdek de visie, waarden en identiteit die PSV maken tot wat het is.</p>
       <div class="grid-3">
-        <div class="card"><div class="card__body"><span class="tag card__label">Strategie</span><div class="card__title">Visie 2030</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Presentatie en video over de koers en ambitie van PSV richting 2030.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
-        <div class="card"><div class="card__body"><span class="tag card__label">Regio</span><div class="card__title">Brainport</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Wat betekent Brainport voor PSV en de regio Eindhoven? Uitleg volgt binnenkort.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag card__label">Strategie</span><div class="card__title"><a href="documenten/PSV-visie-2030.pdf" target="_blank" rel="noopener" style="color:inherit">Visie 2030 &#8599;</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">De presentatie over de koers en ambitie van PSV richting 2030 — <strong>Creating Stars Together</strong>. Bekijk de volledige uitwerking van de strategische pijlers.</p><div class="card__meta"><span class="tag">Presentatie</span> <span>PDF</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('brainport')" aria-label="Brainport en Fe+Male Tech Heroes bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag card__label">Regio &amp; partnerships</span>
+            <div class="card__title">Brainport &amp; Fe+Male Tech</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Waarom staat Brainport op ons shirt? Ontdek het verhaal achter de regio, de podcast en het partnership met Fe+Male Tech Heroes.</p>
+            <div class="card__meta"><span class="tag tag--black">3 onderdelen</span> <span class="drill-cta">Bekijk &#8594;</span></div>
+          </div></div>
+        </button>
         <button class="card-btn" onclick="openPopover('kernwaarden-leerpaden')" aria-label="Kernwaarden-leerpaden bekijken">
           <div class="card"><div class="card__body">
             <span class="tag card__label">Identiteit</span>
@@ -1604,6 +1611,7 @@
         </button>
         <div class="card"><div class="card__body"><span class="tag card__label">Merk</span><div class="card__title">Merkwaarden</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Waar het merk PSV voor staat — de meest actuele uitleg volgt binnenkort.</p><div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div></div></div>
         <div class="card"><div class="card__body"><span class="tag card__label">Intern</span><div class="card__title">Interne masterclasses</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer van experts binnen PSV over thema's als AI, sportmarketing, Brainport, videoanalyse en Visie 2030.</p><div class="card__meta"><span class="tag">Live</span> <span>1–2 uur</span></div></div></div>
+        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Onboarding</span><div class="card__title"><a href="https://acties.psv.nl/psv-organisatie-onboarding-gamification" target="_blank" rel="noopener" style="color:inherit">PSV Quiz &#8599;</a></div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Hoe goed ken jij PSV? Test je kennis over de club, de organisatie en de mensen — een speelse manier om je in te werken.</p><div class="card__meta"><span class="tag tag--black">Quiz</span> <span class="tag tag--outlined">Extern</span></div></div></div>
       </div>
     </div>
   </dialog>
@@ -1739,6 +1747,46 @@
             <div class="card__meta"><span class="tag tag--black">Inspiratie</span> <span class="drill-cta">Bekijk alle →</span></div>
           </div></div>
         </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · BRAINPORT & FE+MALE TECH (onder Dit is PSV) -->
+  <dialog class="popover popover--sub" id="popover-brainport" aria-labelledby="pt-brainport">
+    <div class="popover-header">
+      <div class="popover-header__content">
+        <span class="label">Regio &amp; partnerships</span>
+        <h2 id="pt-brainport">Brainport &amp; Fe+Male Tech</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">&#10005;</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Brainport staat op ons shirt omdat PSV en de regio Eindhoven hetzelfde geloven: samen kom je verder dan alleen. Ontdek het verhaal achter dat shirt en de partnerships die daaruit voortkomen.</p>
+      <div class="grid-3">
+        <div class="card"><div class="card__body">
+          <span class="tag card__label">Het verhaal</span>
+          <div class="card__title"><a href="https://brainporteindhoven.com/nl/ontdek-brainport/psv-en-brainport/ons-verhaal-achter-het-shirt" target="_blank" rel="noopener" style="color:inherit">Ons verhaal achter het shirt &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Waarom het logo van Brainport op ons shirt staat: als één regio veroveren we samen de wereld — van ASML en Philips tot alle bedrijven daaromheen.</p>
+          <div class="card__meta"><span class="tag">Lezen</span> <span class="tag tag--outlined">Extern</span></div>
+        </div></div>
+        <div class="card"><div class="card__body">
+          <span class="tag tag--black card__label">Podcast</span>
+          <div class="card__title"><a href="https://open.spotify.com/episode/5gNWnC9X0xP2qD6nXD09Ft" target="_blank" rel="noopener" style="color:inherit">PSV commercieel de grootste club van Nederland? &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Aflevering uit de podcast <em>De Beslissers</em> over de commerciële kant van PSV en de kracht van de regio.</p>
+          <div class="card__meta"><span class="tag tag--black">Luisteren</span> <span>66 min</span></div>
+        </div></div>
+        <div class="card"><div class="card__body">
+          <span class="tag tag--gold card__label">Partnership</span>
+          <div class="card__title"><a href="https://acties.psv.nl/psv-partnerships-female-tech-heroes-home" target="_blank" rel="noopener" style="color:inherit">PSV Vrouwen &amp; Fe+Male Tech Heroes &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Samen met Fe+Male Tech Heroes zetten we vrouwen in voetbal én techniek op de kaart — een partnership dat de regio en de club verbindt.</p>
+          <div class="card__meta"><span class="tag tag--gold">Partnership</span> <span class="tag tag--outlined">Extern</span></div>
+        </div></div>
+        <div class="card"><div class="card__body">
+          <span class="tag tag--outlined card__label">Verdieping</span>
+          <div class="card__title">Presentatie Brainport</div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Een presentatie met meer achtergrond over Brainport en de rol van PSV in de regio volgt binnenkort.</p>
+          <div class="card__meta"><span class="tag tag--outlined">Binnenkort</span></div>
+        </div></div>
       </div>
     </div>
   </dialog>
@@ -2026,26 +2074,34 @@
     const SEARCH_INDEX = [
       // DIT IS PSV
       { title: 'Visie 2030',               category: 'Dit is PSV', pad: ['dit-is-psv'],
-        keywords: ['visie','2030','strategie','koers','ambitie','toekomst','plan','doel'] },
-      { title: 'Brainport',                category: 'Dit is PSV', pad: ['dit-is-psv'],
-        keywords: ['brainport','regio','eindhoven','techniek','innovatie','samenwerking','omgeving'] },
+        keywords: ['visie','2030','strategie','koers','ambitie','toekomst','plan','doel','presentatie','creating stars together','pijlers'] },
+      { title: 'Brainport & Fe+Male Tech', category: 'Dit is PSV · Brainport', pad: ['dit-is-psv','brainport'],
+        keywords: ['brainport','regio','eindhoven','techniek','innovatie','samenwerking','omgeving','shirt','asml','philips','partnership'] },
+      { title: 'Ons verhaal achter het shirt', category: 'Dit is PSV · Brainport', pad: ['dit-is-psv','brainport'],
+        keywords: ['shirt','brainport','logo','verhaal','regio','trots','sponsor','tenue'] },
+      { title: 'Podcast De Beslissers',    category: 'Dit is PSV · Brainport', pad: ['dit-is-psv','brainport'],
+        keywords: ['podcast','spotify','beslissers','luisteren','commercieel','organisatie','interview','audio'] },
+      { title: 'Fe+Male Tech Heroes',      category: 'Dit is PSV · Brainport', pad: ['dit-is-psv','brainport'],
+        keywords: ['female tech heroes','vrouwen','techniek','tech','partnership','psv vrouwen','diversiteit','inclusie'] },
       { title: 'Merkwaarden',              category: 'Dit is PSV', pad: ['dit-is-psv'],
         keywords: ['merk','merkwaarden','branding','identiteit','uitstraling','waar staan we voor'] },
+      { title: 'PSV Quiz',                 category: 'Dit is PSV', pad: ['dit-is-psv'],
+        keywords: ['quiz','onboarding','inwerken','spel','game','gamification','kennis','test','nieuwe collega','vragen'] },
       { title: 'Interne masterclasses',    category: 'Dit is PSV', pad: ['dit-is-psv'],
         keywords: ['masterclass','inspiratie','lezing','presentatie','expert','collega','kennis','sessie','event','spreker'] },
 
       // DIT IS PSV · KERNWAARDEN (leerpaden)
       { title: 'Kernwaarden',              category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden'],
         keywords: ['kernwaarden','waarden','identiteit','leerpad','cultuur','gedrag'] },
-      { title: 'Prestatiegericht',         category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden'],
+      { title: 'Prestatiegericht',         category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden','leerpad-prestatiegericht'],
         keywords: ['prestatie','resultaat','doel','ambitie','winnen','excellentie','kwaliteit','performance','focus'] },
-      { title: 'Gastvrij',                 category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden'],
+      { title: 'Gastvrij',                 category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden','leerpad-gastvrij'],
         keywords: ['gastvrijheid','welkom','klant','service','vriendelijk','ontvangst','hospitality','gast'] },
       { title: 'Betrouwbaar',              category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden','leerpad-betrouwbaar'],
         keywords: ['vertrouwen','integriteit','eerlijk','afspraken','transparantie','commitment','betrouwbaarheid','campagne','ethiek','feedback'] },
-      { title: 'Sociaal betrokken',        category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden'],
+      { title: 'Sociaal betrokken',        category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden','leerpad-sociaal-betrokken'],
         keywords: ['sociaal','gemeenschap','maatschappij','betrokkenheid','verbinding','samenwerking','inclusie','diversiteit','buurt'] },
-      { title: 'Innovatief',               category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden'],
+      { title: 'Innovatief',               category: 'Dit is PSV · Kernwaarden', pad: ['dit-is-psv','kernwaarden-leerpaden','leerpad-innovatief'],
         keywords: ['innovatie','creativiteit','vernieuwing','technologie','toekomst','idee','verandering','experiment'] },
 
       // GROEIEN IN JE WERK
@@ -2538,6 +2594,128 @@
           ]},
         ],
         verdieping:'Ga verder op het pad van integriteit! Volg de volledige trainingen Ethiek en Zeggen waar het op staat, of verken Feedback vragen en Lastige gesprekken voor een compleet beeld van betrouwbaar leiderschap.',
+      },
+      prestatiegericht: {
+        groep:'kernwaarden',
+        intro:'Neem eigenaarschap, werk doelgericht en blijf jezelf continu ontwikkelen. Want bij PSV geldt: wie verantwoordelijkheid neemt en leergierig blijft, maakt het verschil op én naast het veld.',
+        weken:[
+          {t:'Waar sta jij nu? Start met een nulmeting', d:'Voordat je begint, ontdek je eerst waar jij nu staat. Twee korte assessments geven je direct inzicht in jouw stijl, waarna je meteen de eerste stap zet in de training Eigenaarschap.', a:[
+            ['test','Timemanagement – krijg jij dingen gedaan?','6 min'],
+            ['test','Learning agility – ben jij toekomstproof?','5 min'],
+            ['training','Eigenaarschap','181 min'],
+            ['video','Wat betekent eigenaarschap voor jou?','8 min'],
+          ]},
+          {t:'Eigenaarschap in de praktijk', d:'Je weet wat eigenaarschap is. Nu ga je het toepassen. Ontdek wat jou drijft en zet het om in concreet actiegedrag.', a:[
+            ['training','Eigenaarschap (vervolg)',''],
+            ['lezen','Wat drijft jou op de werkvloer?','10 min'],
+            ['oefening','Zet jouw eigenaarschap in de praktijk','12 min'],
+          ]},
+          {t:'Leren van je fouten', d:'Toppers leren van hun missers. Met inzichten van Jordi Huybregts, coach prestatiegedrag bij de PSV jeugdopleiding, ontdek jij hoe je elke fout omzet in groei.', a:[
+            ['les','Leren van je fouten','34 min'],
+            ['video','Hoe je een misser omzet in groei','8 min'],
+            ['lezen','Effectief omgaan met fouten in twee stappen','6 min'],
+            ['oefening','Oefen zelfcompassie en leer van een recente fout','8 min'],
+            ['lezen','Creëer zelf een open foutencultuur op het werk','6 min'],
+            ['test','Hoe ga jij om met fouten in je team?','6 min'],
+          ]},
+          {t:'Doelgericht naar de eindstreep', d:'Sluit af met een krachtige sprint. Leer hoe je doelen stelt die écht werken en resultaten behaalt waar je trots op bent.', a:[
+            ['training','Doelgericht werken','177 min'],
+            ['video','Leer doelen stellen die werken','8 min'],
+            ['lezen','Plan slim en prioriteer scherp','10 min'],
+            ['oefening','Oefen met jouw eigen doelen','12 min'],
+          ]},
+        ],
+        verdieping:'Wil je nóg meer uit jezelf halen? Verken de volledige trainingen Eigenaarschap en Doelgericht werken, of zet de volgende stap met Persoonlijk leiderschap.',
+      },
+      gastvrij: {
+        groep:'kernwaarden',
+        intro:'Communiceer open, luister actief en bouw bruggen. Bij PSV betekent gastvrij zijn: iedereen welkom laten voelen en samenwerken zonder oordeel, elke dag opnieuw.',
+        weken:[
+          {t:'Waar sta jij nu? Start met een nulmeting', d:'Ontdek eerst hoe jij communiceert en samenwerkt. Twee assessments geven je direct inzicht, waarna je meteen start met gastvrijheid in de praktijk.', a:[
+            ['test','Verbindende communicatie – direct, maar empathisch','4 min'],
+            ['test','Sociale skills – jouw omgang met anderen','3 min'],
+            ['training','Klantgericht werken','197 min'],
+            ['video','Wat wil de ander echt?','8 min'],
+          ]},
+          {t:'Gastvrijheid in actie', d:'Van theorie naar praktijk. Leer hoe je aandacht en afstemming omzet in een echte gastvrije houding.', a:[
+            ['training','Klantgericht werken (vervolg)',''],
+            ['lezen','De kunst van luisteren en afstemmen','10 min'],
+            ['oefening','Oefen met een echte situatie','12 min'],
+          ]},
+          {t:'Inclusief communiceren', d:'Meer dan woorden. Ontdek hoe je communiceert op een manier die iedereen raakt en niemand uitsluit.', a:[
+            ['les','Inclusief communiceren','34 min'],
+            ['video','Hoe stem jij je communicatie af op anderen?','8 min'],
+            ['lezen','Inclusieve taal in de praktijk','10 min'],
+            ['oefening','Geef ruimte aan stemmen op de achtergrond','10 min'],
+          ]},
+          {t:'Luisteren als superkracht', d:'Afsluiting met de krachtigste gesprekstechniek: LSD. Leer hoe je met Luisteren, Samenvatten en Doorvragen de kern van elk gesprek raakt.', a:[
+            ['training','Gesprekstechnieken LSD','201 min'],
+            ['video','De kracht van actief luisteren','8 min'],
+            ['lezen','Samenvatten en doorvragen in de praktijk','10 min'],
+            ['oefening','Oefen de LSD-techniek','12 min'],
+          ]},
+        ],
+        verdieping:'Klaar voor meer? Verken de volledige trainingen of duik in Customer Support en Zeggen waar het op staat voor een extra dimensie in gastvrij en servicegericht gedrag.',
+      },
+      'sociaal-betrokken': {
+        groep:'kernwaarden',
+        intro:'Samen sta je sterker. Ontdek hoe jij bijdraagt aan een hechte PSV-gemeenschap, kennis deelt, collega\'s ondersteunt en oog houdt voor maatschappelijke impact.',
+        weken:[
+          {t:'Waar sta jij nu? Start met een nulmeting', d:'Ontdek eerst jouw teamrol en hoe het staat met de teamspirit om je heen. Daarna start je direct met bouwen aan echte betrokkenheid.', a:[
+            ['test','Teamrollen – hoe versterk jij het team?','8 min'],
+            ['test','Teamspirit – spatten de vonken ervan af?','10 min'],
+            ['training','Iedereen betrokken','189 min'],
+            ['video','Wat maakt mensen echt betrokken?','8 min'],
+          ]},
+          {t:'Betrokkenheid in de praktijk', d:'Motiveer jezelf en anderen. Leer de gouden formule voor bevlogenheid en zet die vandaag nog in.', a:[
+            ['training','Iedereen betrokken (vervolg)',''],
+            ['lezen','De gouden formule voor bevlogenheid','10 min'],
+            ['oefening','Zet betrokkenheid in jouw team in actie','12 min'],
+          ]},
+          {t:'Help je team zingeving te halen uit werk', d:'Elke collega verdient meer dan een takenlijst. Ontdek in deze les hoe je anderen helpt om betekenis te vinden in hun werk.', a:[
+            ['les','Help je team zingeving te halen uit hun werk','30 min'],
+            ['video','Herken een gebrek aan zingeving','8 min'],
+            ['lezen','Hoe vergroot je motivatie en onderlinge band?','10 min'],
+            ['oefening','Jobcrafting in de praktijk','10 min'],
+          ]},
+          {t:'Samen winnen als team', d:'Échte samenwerking gaat verder dan taken verdelen. Bouw vertrouwen, stel gezamenlijke doelen en vier successen als team.', a:[
+            ['training','Teamwork','269 min'],
+            ['video','Wat maakt een echt team?','8 min'],
+            ['lezen','Doelen stellen en vertrouwen opbouwen','10 min'],
+            ['oefening','Evalueer jouw teamdynamiek','12 min'],
+          ]},
+        ],
+        verdieping:'Wil je meer? Verken de volledige trainingen Teamwork en Iedereen betrokken, of duik in Culturele diversiteit en Duurzaam ondernemen voor een bredere maatschappelijke blik.',
+      },
+      innovatief: {
+        groep:'kernwaarden',
+        intro:'Grote dromen, kleine stappen. Leer hoe jij bij PSV kansen signaleert, ideeën omzet in actie en met kleine experimenten grote veranderingen in gang zet.',
+        weken:[
+          {t:'Waar sta jij nu? Start met een nulmeting', d:'Ontdek eerst hoe creatief en toekomstbestendig jij al bent. Daarna duik je direct in de wereld van innovatie.', a:[
+            ['test','Creativiteit – welk type ben jij?','7 min'],
+            ['test','Learning agility – ben jij toekomstproof?','5 min'],
+            ['training','Leren innoveren','183 min'],
+            ['video','Wat is innovatie en waarom doet het ertoe?','8 min'],
+          ]},
+          {t:'Van idee naar actie', d:'Innoveren doe je niet alleen met grote plannen. Leer hoe je van een klein idee een concrete stap maakt.', a:[
+            ['training','Leren innoveren (vervolg)',''],
+            ['lezen','Van idee naar innovatieplan','10 min'],
+            ['oefening','Zet jouw eerste innovatiestap','12 min'],
+          ]},
+          {t:'Creatief denken', d:'Laat vaste denkpatronen los. Ontdek hoe creatief denken je helpt om problemen op te lossen en kansen te zien die anderen missen.', a:[
+            ['les','Creatief denken','52 min'],
+            ['video','Wat is creatief denken en waarom is het waardevol?','10 min'],
+            ['lezen','Creatieve technieken in de praktijk','15 min'],
+            ['oefening','Wakker je eigen creativiteit aan','12 min'],
+          ]},
+          {t:'Out of the box naar de eindstreep', d:'Gooi vaste denkpatronen overboord en leer net zo creatief denken als de beste innovators. Jij hebt het in je!', a:[
+            ['training','Out of the box-denken','195 min'],
+            ['video','Doorbreek jouw denkpatronen','8 min'],
+            ['lezen','Leer de Walt Disney Strategie en Appreciative Inquiry','10 min'],
+            ['oefening','Brainstorm een innovatief idee voor PSV','12 min'],
+          ]},
+        ],
+        verdieping:'Ga nóg dieper: verken Design thinking, Beter brainstormen of Verandermanagement voor een complete innovatie-toolkit die je direct kunt inzetten bij PSV.',
       },
     };
 
