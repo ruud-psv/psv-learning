@@ -660,6 +660,31 @@
     .popover-header__content { padding-right: calc(44px + var(--space-4)); }
 
     /* ============================================================
+       EXTERN-STRIP — regel onder de vier thema's op de homepage
+       ============================================================ */
+    .extern-strip {
+      background: var(--color-white); box-shadow: var(--shadow-card);
+      border-left: var(--border-accent-width) solid var(--color-red-primary);
+      padding: var(--space-6); margin-top: var(--space-6);
+      display: grid; grid-template-columns: 1fr auto;
+      gap: var(--space-6); align-items: center;
+    }
+    .extern-strip__titel {
+      font-family: var(--font-condensed); font-size: var(--text-xl);
+      text-transform: uppercase; margin-bottom: var(--space-3);
+    }
+    .extern-strip p { margin-bottom: var(--space-3); }
+    .extern-strip p:last-of-type { margin-bottom: 0; }
+    .extern-strip__acties {
+      display: flex; flex-direction: column; gap: var(--space-3);
+      align-items: stretch;
+    }
+    .extern-strip__acties .btn { justify-content: center; white-space: nowrap; }
+    @media (max-width: 960px) {
+      .extern-strip { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
        ERVARING — quote van een collega
        ============================================================ */
     .ervaring {
@@ -1222,7 +1247,7 @@
                       <img src="huisstijl/icons/WHITE/ICON_PSV_white_person.svg" alt="" />
                     </div>
                     <div class="card__body">
-                      <div class="card__count">6 onderdelen</div>
+                      <div class="card__count">5 onderdelen</div>
                       <div class="card__title-highlight"><span>Persoonlijke</span><br><span>ontwikkeling</span></div>
                       <div class="card-ghost-cta">Bekijk thema →</div>
                     </div>
@@ -1244,6 +1269,21 @@
                 </button>
 
               </div><!-- /grid-4 -->
+
+              <!-- Externe aanbieders: geldt voor alle vier de thema's, daarom
+                   een eigen regel onder de tegels in plaats van in één thema -->
+              <div class="extern-strip">
+                <div>
+                  <div class="extern-strip__titel">Externe aanbieders</div>
+                  <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Wil je je verder ontwikkelen buiten PSV? Ontdek opleidingen, trainingen en cursussen van externe aanbieders die aansluiten bij jouw ontwikkeling en werk.</p>
+                  <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Wil je een betaalde opleiding, training of cursus volgen? Vul dan het formulier hiernaast in.</p>
+                  <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)"><strong>Let op:</strong> voor betaalde opleidingen is een professionele onderbouwing nodig. Vooraf is goedkeuring van je leidinggevende en HR vereist.</p>
+                </div>
+                <div class="extern-strip__acties">
+                  <a class="btn" href="documenten/Aanvraagformulier-betaalde-opleiding.docx" download>Download het aanvraagformulier</a>
+                  <button class="btn btn--outlined" onclick="openPopover('extern')">Bekijk externe aanbieders</button>
+                </div>
+              </div>
             </div><!-- /overview-section nieuw -->
             </article>
 
@@ -1405,7 +1445,7 @@
       <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">✕</button>
     </div>
     <div class="popover-body">
-      <p class="lead">Soms ligt groei buiten je vertrouwde speelveld. Hier kies je bewust voor externe leerervaringen die je verdiepen of verbreden. Dat vraagt regie: weten wat je wilt leren en dit vertalen naar je werk bij PSV.</p>
+      <p class="lead">Wil je je verder ontwikkelen buiten PSV? Ontdek opleidingen, trainingen en cursussen van externe aanbieders die aansluiten bij jouw ontwikkeling en werk. Voor een betaalde opleiding vul je het aanvraagformulier op de homepage in — met een professionele onderbouwing en vooraf goedkeuring van je leidinggevende en HR.</p>
       <div class="grid-3">
         <div class="card"><div class="card__body"><span class="tag tag--black card__label">Loopbaan &amp; Ontwikkeling</span><div class="card__title">Aanbieder A</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Specialisten in loopbaanontwikkeling en persoonlijke groei, met bewezen aanpak voor organisaties in de sport- en entertainmentsector.</p><div class="card__meta"><a href="#" class="btn">Maak kennis</a></div></div></div>
         <div class="card"><div class="card__body"><span class="tag tag--black card__label">Vitaliteit &amp; Welzijn</span><div class="card__title">Aanbieder B</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Vitality-expert met programma's gericht op bewegen, voeding en mentale gezondheid — op maat voor PSV-medewerkers.</p><div class="card__meta"><a href="#" class="btn">Maak kennis</a></div></div></div>
@@ -1735,14 +1775,6 @@
             <div class="card__meta"><span class="tag tag--gold">MDT</span> <span class="drill-cta">Bekijk →</span></div>
           </div></div>
         </button>
-        <button class="card-btn" onclick="openPopover('extern')" aria-label="Externe aanbieders bekijken">
-          <div class="card"><div class="card__body">
-            <span class="tag tag--outlined card__label">Extern</span>
-            <div class="card__title">Externe aanbieders / training</div>
-            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Kies bewust voor externe leerervaringen die je verdiepen of verbreden — in overleg met je leidinggevende.</p>
-            <div class="card__meta"><span class="tag tag--outlined">Extern</span> <span class="drill-cta">Bekijk alle →</span></div>
-          </div></div>
-        </button>
         <button class="card-btn" onclick="openPopover('groei')" aria-label="Groei en inspiratie hub bekijken">
           <div class="card"><div class="card__body">
             <span class="tag tag--gold card__label">Inspiratie</span>
@@ -1767,10 +1799,23 @@
     <div class="popover-body">
       <p class="lead">Goed presteren begint bij goed in je energie zitten. Ontdek hoe je mentaal en fysiek fit blijft en bewuste keuzes maakt.</p>
       <div class="grid-3">
-        <div class="card"><div class="card__body"><span class="tag card__label">Welzijn</span><div class="card__title">Vitaliteit</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Ontdek het complete PSV vitality-aanbod — van sportfaciliteiten en health checks tot mindfulness en voeding.</p><div class="card__meta"><span class="tag">Doorlopend</span></div></div></div>
-        <div class="card"><div class="card__body"><span class="tag tag--black card__label">Sport</span><div class="card__title">Sportaanbieders</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Exclusieve kortingen en samenwerkingen met sportaanbieders in de regio Eindhoven.</p><div class="card__meta"><span class="tag tag--black">Overzicht</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('vitaliteit')" aria-label="PSV Vitality bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag card__label">Welzijn</span>
+            <div class="card__title">Vitaliteit</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Meer energie, meer werkplezier en beter in je vel zitten. Ontdek het PSV Vitality-aanbod — als medewerker doe je gratis mee.</p>
+            <div class="card__meta"><span class="tag">Gratis</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
         <div class="card"><div class="card__body"><span class="tag card__label">Gezondheid</span><div class="card__title">Stoppen met roken</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Professioneel begeleid traject om te stoppen met roken, volledig vergoed door PSV.</p><div class="card__meta"><span class="tag">Traject</span> <span>6 wk</span></div></div></div>
-        <div class="card"><div class="card__body"><span class="tag card__label">Mindset</span><div class="card__title">Mindfulness</div><p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Leer omgaan met stress en vergroot je mentale veerkracht via een begeleide training van 8 weken.</p><div class="card__meta"><span class="tag">Training</span> <span>8 wk</span></div></div></div>
+        <button class="card-btn" onclick="openPopover('mindfulness')" aria-label="Mindfulness bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag card__label">Mindset</span>
+            <div class="card__title">Mindfulness</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Hoe aandachtig leef jij? Doe de assessments en krijg persoonlijk advies over focus, balans en mentale gezondheid.</p>
+            <div class="card__meta"><span class="tag">Assessment</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
         <button class="card-btn" onclick="openPopover('recepten')" aria-label="Recepten van collega's bekijken">
           <div class="card"><div class="card__body">
             <span class="tag tag--black card__label">Lifestyle</span>
@@ -1779,6 +1824,114 @@
             <div class="card__meta"><span class="tag tag--black">Inspiratie</span> <span class="drill-cta">Bekijk alle →</span></div>
           </div></div>
         </button>
+        <button class="card-btn" onclick="openPopover('duurzame-inzetbaarheid')" aria-label="Duurzame inzetbaarheid bekijken">
+          <div class="card"><div class="card__body">
+            <span class="tag tag--gold card__label">Duurzaam</span>
+            <div class="card__title">Duurzame inzetbaarheid</div>
+            <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Gezond, gemotiveerd en met plezier blijven werken — nu én in de toekomst. Vier pijlers met trainingen, lessen en assessments.</p>
+            <div class="card__meta"><span class="tag tag--gold">4 pijlers</span> <span class="drill-cta">Bekijk alle →</span></div>
+          </div></div>
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · PSV VITALITY (onder Zorg goed voor jezelf) -->
+  <dialog class="popover popover--sub" id="popover-vitaliteit" aria-labelledby="pt-vitaliteit">
+    <div class="popover-header popover-header--black">
+      <div class="popover-header__content">
+        <span class="label">Welzijn &amp; energie</span>
+        <h2 id="pt-vitaliteit">PSV Vitality</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">&#10005;</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Meer energie, meer werkplezier en beter in je vel zitten. Daar draait PSV Vitality om.</p>
+      <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-4)">Vitaliteit zit al sinds 1913 in het DNA van PSV. Wat begon als een initiatief voor medewerkers van Philips, is uitgegroeid tot een programma dat organisaties helpt om mensen duurzaam inzetbaar te houden. Alle onderdelen zijn gebaseerd op wetenschappelijk onderbouwde methodes en gericht op blijvende impact.</p>
+
+      <div class="alert alert--success" style="margin-bottom:var(--space-8)">
+        <strong>Gratis voor PSV-medewerkers.</strong> Je kunt zonder kosten deelnemen aan het vitaliteitsaanbod. Ontdek hieronder wat jij kunt doen om te werken aan jouw vitaliteit.
+      </div>
+
+      <div class="grid-2" style="margin-bottom:var(--space-8)">
+        <div class="card" style="border-top:4px solid var(--color-red-primary)"><div class="card__body">
+          <span class="tag card__label">12 weken</span>
+          <div class="card__title"><a href="https://www.psv.nl/vitality/12-weeks" target="_blank" rel="noopener" style="color:inherit">PSV Vitality 12 weeks &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Twaalf groepsbijeenkomsten van één uur theorie en één uur beweging in en rondom het Philips Stadion, over voeding, beweging, ontspanning en energiemanagement. Inclusief trainingskleding, beweegmonitor, werkboek en de PSV Vitality App.</p>
+          <div class="card__meta"><span class="tag">Programma</span></div>
+        </div></div>
+        <div class="card" style="border-top:4px solid var(--color-neutral-dark)"><div class="card__body">
+          <span class="tag tag--black card__label">Wekelijks</span>
+          <div class="card__title"><a href="https://www.psv.nl/vitality/sports-bootcamp" target="_blank" rel="noopener" style="color:inherit">PSV Bootcamp &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">In groepsverband en laagdrempelig werken aan conditie, krachtuithoudingsvermogen en fitheid. Sessies van zestig minuten bij het Philips Stadion: maandag 19:00–20:00 uur en donderdag 17:00–18:00 uur.</p>
+          <div class="card__meta"><span class="tag tag--black">Groepsles</span> <span>60 min</span></div>
+        </div></div>
+        <div class="card" style="border-top:4px solid var(--color-red-primary)"><div class="card__body">
+          <span class="tag card__label">Hardlopen</span>
+          <div class="card__title"><a href="https://www.psv.nl/vitality/start-to-run" target="_blank" rel="noopener" style="color:inherit">Samen trainen voor de marathon? &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Twaalf gezamenlijke hardlooptrainingen in de buitenlucht onder leiding van een trainer, met aandacht voor hardlooptechniek en ademhaling. Geschikt voor beginners én ervaren hardlopers.</p>
+          <div class="card__meta"><span class="tag">Start to Run</span></div>
+        </div></div>
+        <div class="card" style="border-top:4px solid var(--color-gold)"><div class="card__body">
+          <span class="tag tag--gold card__label">Op maat</span>
+          <div class="card__title"><a href="https://www.psv.nl/vitality/contact" target="_blank" rel="noopener" style="color:inherit">Energie- &amp; timemanagement &#8599;</a></div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)">Vitaliteitsmodules en trainingen op maat rond energie- en timemanagement. Neem contact op met PSV Vitality voor de mogelijkheden.</p>
+          <div class="card__meta"><span class="tag tag--gold">Contact</span></div>
+        </div></div>
+      </div>
+
+      <h3 style="font-family:var(--font-condensed);font-size:var(--text-xl);text-transform:uppercase;margin-bottom:var(--space-4)">Ervaringen van collega's</h3>
+      <div class="grid-2">
+        <blockquote class="ervaring">
+          <div class="ervaring__label">PSV Bootcamp</div>
+          <p>Voor mij is de bootcamp een leuke manier om na afloop van een werkdag even lekker alles eruit te sporten. Ik vind het heel fijn dat ik door PSV aangeboden professionele begeleiding krijg, waardoor ik dingen anders en beter doe dan wanneer ik het zelf zou doen. Daarbij is het extra leuk om de oefeningen buiten te doen en is het voor mij echt een meerwaarde dat het ook erg gezellig is met de PSV-collega's en zelfs externen, met wie soms een band is ontstaan. Ik zou ook andere collega's willen vragen om mee te doen: het is goed voor de onderlinge contacten, erg leuk en goed voor lichaam en geest. Eigenlijk ben je gek als je het niet doet en het wel gratis krijgt!</p>
+          <footer>
+            <span class="ervaring__naam">Roy Smits</span>
+            <span class="ervaring__rol">Manager ICT</span>
+          </footer>
+        </blockquote>
+        <blockquote class="ervaring ervaring--dark">
+          <div class="ervaring__label">PSV Bootcamp</div>
+          <p>De bootcamp is voor mij een laagdrempelige manier om op een goed niveau twee keer in de week deel te nemen aan een groepsles waarbij je even helemaal 'kapot kan gaan'. Lekker sporten en het maximale uit jezelf halen. Laagdrempelig, omdat de trainers in staat zijn om rekening te houden met ieders niveau. Er is vaak een vaste kern, maar er zijn ook elke week wel nieuwelingen of mensen die vanuit de 12 weeks komen.</p>
+          <footer>
+            <span class="ervaring__naam">Jorgen van der Meulen</span>
+            <span class="ervaring__rol">Coördinator digitale platformen</span>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div class="alert alert--info" style="margin-top:var(--space-8)">
+        Het volledige aanbod en aanmelden vind je op <a href="https://www.psv.nl/vitality/home" target="_blank" rel="noopener">psv.nl/vitality</a>.
+      </div>
+    </div>
+  </dialog>
+
+  <!-- SUB · MINDFULNESS (onder Zorg goed voor jezelf) -->
+  <dialog class="popover popover--sub" id="popover-mindfulness" aria-labelledby="pt-mindfulness">
+    <div class="popover-header">
+      <div class="popover-header__content">
+        <span class="label">Aandacht &amp; balans</span>
+        <h2 id="pt-mindfulness">Mindfulness</h2>
+      </div>
+      <button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">&#10005;</button>
+    </div>
+    <div class="popover-body">
+      <p class="lead">Even stilstaan bij wat er nú gebeurt. Met deze twee assessments krijg je inzicht in je aandacht, focus en balans — en een persoonlijk advies met trainingen die daarbij passen.</p>
+      <div class="grid-2">
+        <div class="card" style="border-top:4px solid var(--color-red-primary)"><div class="card__body">
+          <span class="tag card__label">Assessment</span>
+          <div class="card__title">Mindfulness: hoe aandachtig leef jij?</div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Heb je vaak het gevoel dat je van taak naar taak gaat? En neem je genoeg tijd om stil te staan bij wat er nú gebeurt? Ontdek hoe mindful jij bent en krijg inzicht in jouw aandacht, focus en balans.</p>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-4)">Na afloop ontvang je een persoonlijk advies, met suggesties voor trainingen in het GoodHabitz-portaal die aansluiten bij jouw ontwikkeling. Zo zet je direct de volgende stap naar meer focus, energie en veerkracht.</p>
+          <a class="btn" href="https://my.goodhabitz.com/nl-nl/assessments/3QsuXRaDohTuHVSQv4u4Zj" target="_blank" rel="noopener">Start de assessment &#8599;</a>
+        </div></div>
+        <div class="card" style="border-top:4px solid var(--color-neutral-dark)"><div class="card__body">
+          <span class="tag tag--black card__label">Assessment</span>
+          <div class="card__title">Mentale gezondheid: vraag en vertel</div>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-3)">Praat jij makkelijk over je mentale gezondheid op het werk? Of vind je dat lastig? Krijg praktische inzichten om mentale gezondheid bespreekbaar te maken, stigma's te doorbreken en het goede voorbeeld te geven.</p>
+          <p style="font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose);margin-bottom:var(--space-4)">Ook hier ontvang je na afloop een persoonlijk advies met trainingen in het GoodHabitz-portaal die aansluiten bij jouw ontwikkeling.</p>
+          <a class="btn btn--secondary" href="https://my.goodhabitz.com/nl-nl/assessments/3VOgWDgSUGGghgS7ND9vUq" target="_blank" rel="noopener">Start de assessment &#8599;</a>
+        </div></div>
       </div>
     </div>
   </dialog>
@@ -2219,8 +2372,10 @@
         keywords: ['coach','suzanne','bertens','nobco','gecertificeerd','balans','onboarding','zelfvertrouwen','energie','persoonlijke ontwikkeling'] },
       { title: 'Maak impact met MDT',      category: 'Persoonlijke ontwikkeling · MDT', pad: ['persoonlijke-ontwikkeling','mdt'],
         keywords: ['mdt','maatschappelijke diensttijd','impact','missie','partnerbivak','maatschappelijk','vrijwillig','betrokken','jongeren'] },
-      { title: 'Externe aanbieders',       category: 'Persoonlijke ontwikkeling · Extern', pad: ['persoonlijke-ontwikkeling','extern'],
-        keywords: ['extern','aanbieder','partner','loopbaan','ontwikkeling','vitaliteit','leiderschap','training','buiten'] },
+      { title: 'Externe aanbieders',       category: 'Homepage · Extern', pad: ['extern'],
+        keywords: ['extern','aanbieder','partner','loopbaan','ontwikkeling','vitaliteit','leiderschap','training','buiten','opleiding','cursus'] },
+      { title: 'Aanvraag betaalde opleiding', category: 'Homepage · Extern', pad: ['extern'],
+        keywords: ['formulier','aanvraag','betaalde opleiding','vergoeding','studiekosten','goedkeuring','leidinggevende','hr','onderbouwing','pop'] },
 
       // PERSOONLIJKE ONTWIKKELING · GROEI & INSPIRATIE HUB
       { title: 'Boekentips',               category: 'Persoonlijke ontwikkeling · Inspiratie', pad: ['persoonlijke-ontwikkeling','groei'],
@@ -2235,16 +2390,38 @@
         keywords: ['evenement','event','agenda','bijeenkomst','congres','workshop','seminar','conferentie','live','uit'] },
 
       // ZORG GOED VOOR JEZELF
-      { title: 'Vitaliteit',               category: 'Zorg goed voor jezelf', pad: ['zorg-voor-jezelf'],
-        keywords: ['vitaal','gezond','welzijn','energie','fit','bewegen','lifestyle','sport','vitaliteit'] },
-      { title: 'Sportaanbieders',          category: 'Zorg goed voor jezelf', pad: ['zorg-voor-jezelf'],
-        keywords: ['sport','gym','fitness','bewegen','training','sporten','sportschool','aanbieder','lichamelijk'] },
       { title: 'Stoppen met roken',        category: 'Zorg goed voor jezelf', pad: ['zorg-voor-jezelf'],
         keywords: ['roken','sigaret','nicotine','stoppen','verslaving','gezondheid','tabak','rook','sigaar'] },
-      { title: 'Health Check',             category: 'Zorg goed voor jezelf', pad: ['zorg-voor-jezelf'],
-        keywords: ['gezondheid','check','meting','bloeddruk','conditie','medisch','screening','keuring','onderzoek','hart'] },
-      { title: 'Mindfulness',              category: 'Zorg goed voor jezelf', pad: ['zorg-voor-jezelf'],
-        keywords: ['meditatie','stress','ontspanning','rust','mindset','aandacht','focus','ademhaling','yoga','mentaal','balans','hoofd','kalm'] },
+
+      // ZORG GOED VOOR JEZELF · PSV VITALITY
+      { title: 'Vitaliteit',               category: 'Zorg goed voor jezelf \u00b7 PSV Vitality', pad: ['zorg-voor-jezelf','vitaliteit'],
+        keywords: ['vitaal','gezond','welzijn','energie','fit','bewegen','lifestyle','sport','vitaliteit','psv vitality','gratis'] },
+      { title: 'PSV Vitality 12 weeks',    category: 'Zorg goed voor jezelf \u00b7 PSV Vitality', pad: ['zorg-voor-jezelf','vitaliteit'],
+        keywords: ['12 weeks','twaalf weken','programma','voeding','beweging','ontspanning','energiemanagement','philips stadion','beweegmonitor'] },
+      { title: 'PSV Bootcamp',             category: 'Zorg goed voor jezelf \u00b7 PSV Vitality', pad: ['zorg-voor-jezelf','vitaliteit'],
+        keywords: ['bootcamp','sporten','conditie','kracht','groepsles','interval','circuit','maandag','donderdag','fitheid','gym','fitness'] },
+      { title: 'Start to Run',             category: 'Zorg goed voor jezelf \u00b7 PSV Vitality', pad: ['zorg-voor-jezelf','vitaliteit'],
+        keywords: ['hardlopen','rennen','marathon','start to run','buiten','ademhaling','techniek','beginners'] },
+      { title: 'Energie- & timemanagement', category: 'Zorg goed voor jezelf \u00b7 PSV Vitality', pad: ['zorg-voor-jezelf','vitaliteit'],
+        keywords: ['energie','timemanagement','tijd','planning','op maat','module','workshop','contact'] },
+
+      // ZORG GOED VOOR JEZELF \u00b7 MINDFULNESS
+      { title: 'Mindfulness',              category: 'Zorg goed voor jezelf \u00b7 Mindfulness', pad: ['zorg-voor-jezelf','mindfulness'],
+        keywords: ['meditatie','stress','ontspanning','rust','mindset','aandacht','focus','ademhaling','yoga','mentaal','balans','hoofd','kalm','assessment'] },
+      { title: 'Mentale gezondheid: vraag en vertel', category: 'Zorg goed voor jezelf \u00b7 Mindfulness', pad: ['zorg-voor-jezelf','mindfulness'],
+        keywords: ['mentale gezondheid','bespreekbaar','stigma','praten','psychisch','welzijn','assessment','goodhabitz'] },
+
+      // ZORG GOED VOOR JEZELF \u00b7 DUURZAME INZETBAARHEID
+      { title: 'Duurzame inzetbaarheid',   category: 'Zorg goed voor jezelf \u00b7 Duurzame inzetbaarheid', pad: ['zorg-voor-jezelf','duurzame-inzetbaarheid'],
+        keywords: ['duurzame inzetbaarheid','werkdruk','balans','autonomie','herstel','gemotiveerd','langer doorwerken','energie','waardering'] },
+      { title: 'Fysiek & mentaal gezond',  category: 'Zorg goed voor jezelf \u00b7 Duurzame inzetbaarheid', pad: ['zorg-voor-jezelf','duurzame-inzetbaarheid','di-fysiek'],
+        keywords: ['veerkracht','burn-out','stress','vitaliteit','mentale gezondheid','psychologische veiligheid','lichaam','gezondheid'] },
+      { title: 'Werkplezier & betrokkenheid', category: 'Zorg goed voor jezelf \u00b7 Duurzame inzetbaarheid', pad: ['zorg-voor-jezelf','duurzame-inzetbaarheid','di-werkplezier'],
+        keywords: ['werkplezier','werkgeluk','betrokkenheid','motivatie','eigenaarschap','job crafting','energie','drive'] },
+      { title: 'Leren & ontwikkelen',      category: 'Zorg goed voor jezelf \u00b7 Duurzame inzetbaarheid', pad: ['zorg-voor-jezelf','duurzame-inzetbaarheid','di-leren'],
+        keywords: ['leren leren','loopbaan','talent','employability','ontwikkelen','zingeving','fouten','groeien'] },
+      { title: 'Werk-priv\u00e9balans',        category: 'Zorg goed voor jezelf \u00b7 Duurzame inzetbaarheid', pad: ['zorg-voor-jezelf','duurzame-inzetbaarheid','di-balans'],
+        keywords: ['werk-privebalans','prive','grenzen','prioriteiten','schermtijd','digitaal','prestatiedruk','stress','rust in je hoofd'] },
       { title: 'Recepten van collega\'s',  category: 'Zorg goed voor jezelf · Recepten', pad: ['zorg-voor-jezelf','recepten'],
         keywords: ['eten','koken','voeding','recept','maaltijd','lunch','diner','gezond eten','food','dieet','voedsel','keuken','snack'] },
     ];
@@ -3040,6 +3217,139 @@
 
     // Gegenereerde dialogs meenemen in de popover-navigatie (terugknop,
     // Escape, klik op de achtergrond) — zie initPopover() hierboven.
+    gen.forEach(initPopover);
+  })();
+  </script>
+
+  <!-- ============================================================
+       DUURZAME INZETBAARHEID — groepsvenster met vier pijlers.
+       Vul PIJLERS aan om items toe te voegen; de vensters en de
+       kaarten worden automatisch gegenereerd.
+       Bron: HR-document 'Duurzame inzetbaarheid' + het GoodHabitz-
+       contentoverzicht per pijler.
+       ============================================================ -->
+  <script>
+  (function () {
+    // Soort -> [label, extra tag-class]
+    const SOORT = {
+      training:   ['Training',   'tag--black'],
+      les:        ['Les',        ''],
+      assessment: ['Assessment', 'tag--gold'],
+    };
+
+    const PIJLERS = {
+      fysiek: { titel:'Fysiek &amp; mentaal gezond', tekst:'Werk aan je energie, veerkracht en gezondheid. Ontdek hoe je beter omgaat met stress, je mentale weerbaarheid versterkt en gezonde gewoontes ontwikkelt.', items:[
+        ['training','Vitaliteit','3u 18m','Eet-, beweeg- en slaappatroon optimaliseren voor meer energie','https://my.goodhabitz.com/nl-nl/courses/16439-vitaliteit.html'],
+        ['training','Veerkracht','3u 24m','Omgaan met tegenslagen, veranderingen en stress','https://my.goodhabitz.com/nl-nl/courses/41792-veerkracht.html'],
+        ['training','Ban de burn-out','3u 27m','Risicofactoren herkennen en burn-out voorkomen','https://my.goodhabitz.com/nl-nl/courses/23495-ban-de-burn-out.html'],
+        ['les','Gaat het wel?','54m','Mentale gezondheid bespreekbaar maken op de werkvloer','https://my.goodhabitz.com/nl-nl/lessons/86030'],
+        ['les','Van stress naar succes','40m','Positieve versus negatieve stress en je persoonlijke groeizone','https://my.goodhabitz.com/nl-nl/lessons/90645'],
+        ['les','Zorg goed voor je lichaam','32m','Fysieke stressfactoren op de werkplek herkennen en aanpakken','https://my.goodhabitz.com/nl-nl/lessons/90713'],
+        ['assessment','Mentale gezondheid – vraag en vertel','6m','Openheid over mentale gezondheid op de werkvloer','https://my.goodhabitz.com/nl-nl/assessments/3VOgWDgSUGGghgS7ND9vUq'],
+        ['assessment','Veerkracht – veer jij terug?','6m','Hoe goed herpak jij jezelf bij uitdagingen?','https://my.goodhabitz.com/nl-nl/assessments/2f618cfa-3e1b-45a2-9a1e-596220f7bd83_nl-NL'],
+        ['assessment','Psychologische veiligheid','6m','In hoeverre voelt je team de vrijheid om zich uit te spreken?','https://my.goodhabitz.com/nl-nl/assessments/89eb09b9-68a9-487b-a1b4-f691c6adb769_nl-NL'],
+      ]},
+      werkplezier: { titel:'Werkplezier &amp; betrokkenheid', tekst:'Krijg inzicht in wat jou motiveert en energie geeft. Ontwikkel vaardigheden die bijdragen aan samenwerking, eigenaarschap, waardering en werkplezier.', items:[
+        ['training','Werkplezier','3u 10m','Meer voldoening en energie uit je werk via job crafting','https://my.goodhabitz.com/nl-nl/courses/12027-werkplezier.html'],
+        ['training','Iedereen betrokken','3u 9m','Betrokkenheid en motivatie van medewerkers vergroten','https://my.goodhabitz.com/nl-nl/courses/10129-iedereen-betrokken.html'],
+        ['training','Eigenaarschap','3u 1m','Meer verantwoordelijkheid, betrokkenheid en voldoening ervaren','https://my.goodhabitz.com/nl-nl/courses/12710-eigenaarschap.html'],
+        ['les','Werkgeluk','54m','Blijven of weggaan? Passie voor je werk terugvinden','https://my.goodhabitz.com/nl-nl/lessons/87748'],
+        ['les','Herontdek je drive','31m','Vroege signalen van afhaken herkennen en energie terugbrengen','https://my.goodhabitz.com/nl-nl/lessons/91953'],
+        ['les','Aanstekelijke energie','52m','Positieve relationele energie uitstralen op de werkvloer','https://my.goodhabitz.com/nl-nl/lessons/85669'],
+        ['assessment','Werkgeluk – pluk de (werk)dag!','6m','Hoe staat het met jouw werkgeluk?','https://my.goodhabitz.com/nl-nl/assessments/1vB0e0N8pfgX0A11RIMy9q'],
+        ['assessment','Positieve energie – straal jij het uit?','7m','Hoe groot is de impact van jouw positieve energie?','https://my.goodhabitz.com/nl-nl/assessments/7hBTrm5FSoLWRTyS0BEpLJ'],
+      ]},
+      leren: { titel:'Leren &amp; ontwikkelen', tekst:'Blijf groeien in je werk. Volg trainingen die je helpen nieuwe kennis en vaardigheden op te doen, je talenten te versterken en mee te bewegen met veranderingen.', items:[
+        ['training','Leren leren','3u 7m','Effectieve leertechnieken en je langetermijngeheugen versterken','https://my.goodhabitz.com/nl-nl/courses/15727-leren-leren.html'],
+        ['training','Regisseer je loopbaan','3u 27m','Loopbaanontwikkeling en employability in eigen hand nemen','https://my.goodhabitz.com/nl-nl/courses/33399-regisseer-je-loopbaan.html'],
+        ['training','Talent ontwikkelen','3u 6m','Talenten herkennen, erkennen en gericht ontwikkelen','https://my.goodhabitz.com/nl-nl/courses/10702-talent-ontwikkelen.html'],
+        ['les','Leren van je fouten','34m','Fouten als leermogelijkheid benutten en een leercultuur creëren','https://my.goodhabitz.com/nl-nl/lessons/96108'],
+        ['les','Geef betekenis aan je werk','32m','Zingeving en verbinding herontdekken in je dagelijkse werk','https://my.goodhabitz.com/nl-nl/lessons/91836'],
+        ['les','Help je team zingeving te halen uit hun werk','30m','Voor leidinggevenden: motivatie en onderlinge band versterken','https://my.goodhabitz.com/nl-nl/lessons/91812'],
+      ]},
+      balans: { titel:'Werk-privébalans', tekst:'Zorg voor een gezonde balans tussen werk en privé. Leer prioriteiten stellen, grenzen bewaken en bewust omgaan met je energie en herstel.', items:[
+        ['training','Werk-privébalans','3u 49m','De balans tussen werk en privé in eigen hand nemen','https://my.goodhabitz.com/nl-nl/courses/78191-werk-privebalans.html'],
+        ['training','Grip op je leven, rust in je hoofd','3u 18m','Productiever en creatiever met een opgeruimd hoofd','https://my.goodhabitz.com/nl-nl/courses/16403-grip-op-je-leven-rust-in-je-hoofd.html'],
+        ['training','Stress is fijn','3u 17m','Gezonde stress als prestatieboost leren inzetten','https://my.goodhabitz.com/nl-nl/courses/15927-stress-is-fijn.html'],
+        ['les','Hou je stress onder controle','28m','Eigen patronen, triggers en waarschuwingssignalen leren kennen','https://my.goodhabitz.com/nl-nl/lessons/90722'],
+        ['les','Ben jij digitaal in balans?','48m','Schermtijd beheren en digitale grenzen stellen','https://my.goodhabitz.com/nl-nl/lessons/89345'],
+        ['les','Omgaan met prestatiedruk','31m','Stresssignalen herkennen en presteren wanneer het erop aankomt','https://my.goodhabitz.com/nl-nl/lessons/96101'],
+      ]},
+    };
+    const VOLGORDE = ['fysiek', 'werkplezier', 'leren', 'balans'];
+
+    const esc = s => (s||'').replace(/&(?!amp;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const P = "font-family:var(--font-text);font-size:var(--text-sm);color:var(--color-gray-10);line-height:var(--leading-loose)";
+    const H3 = "font-family:var(--font-condensed);font-size:var(--text-xl);text-transform:uppercase;margin-bottom:var(--space-4)";
+
+    function itemRij(it) {
+      const [soort, titel, duur, oms, url] = it;
+      const [label, cls] = SOORT[soort] || ['Onderdeel', ''];
+      return '<li style="display:flex;gap:var(--space-3);align-items:baseline;padding:var(--space-3) 0;border-bottom:1px solid var(--color-gray-07)">'
+        + '<span class="tag ' + cls + '" style="flex-shrink:0;min-width:92px;text-align:center">' + label + '</span>'
+        + '<span style="flex:1;' + P + '">'
+        +   '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--color-black);font-family:var(--font-sans);font-weight:700">' + esc(titel) + ' \u2197</a>'
+        +   '<br>' + esc(oms)
+        + '</span>'
+        + '<span style="' + P + ';color:var(--color-gray-09);white-space:nowrap">' + esc(duur) + '</span>'
+        + '</li>';
+    }
+
+    function pijlerDialog(id) {
+      const pj = PIJLERS[id];
+      return '<dialog class="popover popover--sub" id="popover-di-' + id + '" aria-labelledby="di-' + id + '">'
+        + '<div class="popover-header popover-header--black">'
+        +   '<div class="popover-header__content">'
+        +     '<span class="label">Duurzame inzetbaarheid</span>'
+        +     '<h2 id="di-' + id + '">' + pj.titel + '</h2>'
+        +   '</div>'
+        +   '<button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">\u2715</button>'
+        + '</div>'
+        + '<div class="popover-body">'
+        +   '<p class="lead">' + esc(pj.tekst) + '</p>'
+        +   '<h3 style="' + H3 + '">Aanbod van GoodHabitz</h3>'
+        +   '<ul style="list-style:none;padding:0;margin:0">' + pj.items.map(itemRij).join('') + '</ul>'
+        + '</div></dialog>';
+    }
+
+    function groepDialog() {
+      const kaarten = VOLGORDE.map(function (id) {
+        const pj = PIJLERS[id];
+        const n = pj.items.length;
+        return '<button class="card-btn" onclick="openPopover(\'di-' + id + '\')" aria-label="' + pj.titel + ' bekijken">'
+          + '<div class="card"><div class="card__body">'
+          +   '<span class="tag tag--gold card__label">Pijler</span>'
+          +   '<div class="card__title">' + pj.titel + '</div>'
+          +   '<p style="' + P + '">' + esc(pj.tekst) + '</p>'
+          +   '<div class="card__meta"><span class="tag tag--black">' + n + ' onderdelen</span> <span class="drill-cta">Bekijk aanbod \u2192</span></div>'
+          + '</div></div></button>';
+      }).join('');
+
+      return '<dialog class="popover popover--sub" id="popover-duurzame-inzetbaarheid" aria-labelledby="pt-duurzame-inzetbaarheid">'
+        + '<div class="popover-header popover-header--black">'
+        +   '<div class="popover-header__content">'
+        +     '<span class="label">Gezond blijven werken</span>'
+        +     '<h2 id="pt-duurzame-inzetbaarheid">Duurzame inzetbaarheid</h2>'
+        +   '</div>'
+        +   '<button class="popover-close" onclick="closeAllPopovers()" aria-label="Sluiten">\u2715</button>'
+        + '</div>'
+        + '<div class="popover-body">'
+        +   '<p class="lead">Duurzame inzetbaarheid betekent dat je gezond, gemotiveerd en met plezier kunt blijven werken, nu \u00e9n in de toekomst.</p>'
+        +   '<p style="' + P + ';margin-bottom:var(--space-4)">Werkdruk ontstaat niet alleen door de hoeveelheid werk. Het gaat vooral om de balans tussen wat je werk van je vraagt en de mogelijkheden die je hebt om invloed uit te oefenen op je werk. Autonomie, ondersteuning, ontwikkelmogelijkheden, waardering en voldoende herstel helpen om die balans te bewaren en energie uit je werk te halen.</p>'
+        +   '<p style="' + P + ';margin-bottom:var(--space-8)">Ga in je eigen tempo aan de slag met jouw duurzame inzetbaarheid. Ontdek trainingen, assessments en inspirerende lessen van GoodHabitz die je daarbij ondersteunen.</p>'
+        +   '<div class="grid-2">' + kaarten + '</div>'
+        +   '<div class="alert alert--info" style="margin-top:var(--space-8)"><strong>Tip:</strong> maak ook gebruik van de GoodHabitz-assessments. Zo krijg je inzicht in jouw kwaliteiten, energiebronnen en ontwikkelmogelijkheden, zodat je gericht kunt werken aan je duurzame inzetbaarheid.</div>'
+        + '</div></dialog>';
+    }
+
+    const frag = document.createElement('div');
+    frag.innerHTML = groepDialog() + VOLGORDE.map(pijlerDialog).join('');
+    const gen = [];
+    while (frag.firstChild) {
+      const n = frag.firstChild;
+      document.body.appendChild(n);
+      if (n.tagName === 'DIALOG') gen.push(n);
+    }
     gen.forEach(initPopover);
   })();
   </script>
